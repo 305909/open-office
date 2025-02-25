@@ -21,8 +21,8 @@ The evaluation procedure includes:
     6. Generating and saving detailed Markdown reports for each student as well as
        a consolidated CSV report.
 
-Author: [Your Name]
-Date: [Today's Date]
+Author: Francesco Giuseppe Gillio
+Date: 25.02.2025
 """
 
 import os

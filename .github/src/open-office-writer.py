@@ -9,6 +9,9 @@ to DOCX using LibreOffice in headless mode.
 External parameters:
   - A JSON configuration file with weights and tolerance values.
   - A reference subfolder to extract files for evaluation.
+
+Author: Francesco Giuseppe Gillio
+Date: 25.02.2025
 """
 
 import os

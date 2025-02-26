@@ -28,6 +28,59 @@ from lxml import etree
 from docx import Document
 
 
+def load_student_registry(registry_path: str) -> dict:
+    """
+    Load student registry from a JSON file.
+    
+    The registry is expected to be in the format:
+    {
+        "student_id": "Student Name"
+    }
+    
+    Args:
+        registry_path (str): Path to the JSON file containing student registry.
+
+    Returns:
+        dict: A dictionary with student IDs as keys and names as values.
+    """
+    try:
+        with open(registry_path, "r") as file:
+            registry = json.load(file)
+            return registry
+    except Exception as e:
+        print(f"Error loading student registry: {e}")
+        sys.exit(1)
+
+
+def match_student_name(extracted_name: str, registry: dict) -> str:
+    """
+    Match an extracted student name to the closest name in the registry.
+    
+    Args:
+        extracted_name (str): The name extracted from the file.
+        registry (dict): The student registry mapping IDs to names.
+        
+    Returns:
+        str: The matched student name.
+    """
+    # Convert the extracted name to uppercase for comparison
+    extracted_name_upper = extracted_name.upper()
+    best_match = None
+    best_ratio = 0.0
+
+    for student_id, student_name in registry.items():
+        ratio = difflib.SequenceMatcher(None, extracted_name_upper, student_name.upper()).ratio()
+        if ratio > best_ratio:
+            best_match = student_name
+            best_ratio = ratio
+
+    # If no match is found with high confidence, return a default or unknown name
+    if best_ratio < 0.75:
+        print(f"Warning: Low match for {extracted_name}. Using default name.")
+        return "UNKNOWN STUDENT"
+
+    return best_match
+
 def convert_odt_to_docx(file_path: str) -> str:
     """
     Convert an ODT file to DOCX format using LibreOffice in headless mode.
@@ -681,7 +734,7 @@ class DocxAssignmentEvaluator:
     individual Markdown reports as well as an overall CSV report.
     """
 
-    def __init__(self, assignment_identifier: str, config: dict = None):
+    def __init__(self, assignment_identifier: str, config: dict = None, registry_path: str = None):
         """
         Initialize the evaluator with the assignment identifier and optional configuration.
         
@@ -690,6 +743,7 @@ class DocxAssignmentEvaluator:
             config (dict, optional): A dictionary containing weights and tolerance values.
         """
         self.assignment_id = assignment_identifier
+        self.registry = load_student_registry(registry_path)  # Load student registry
         self.assignments_dir = "assignments"
         self.solutions_dir = "solutions"
         self.evaluations_dir = os.path.join("evaluations", self.assignment_id)
@@ -729,25 +783,23 @@ class DocxAssignmentEvaluator:
         return True
 
     @staticmethod
-    def extract_student_name(file_path: str) -> tuple[str, str]:
+    def extract_student_name(self, file_path: str) -> str:
         """
-        Extract the student's first name and surname from the DOCX file name.
+        Extract the student's name from the DOCX file name and match it against the registry.
         
-        Assumes the file name is formatted as "firstname-surname.docx".
+        Assumes the file name is formatted as "firstname-surname.odt".
         
         Args:
             file_path (str): The path to the student's DOCX file.
         
         Returns:
-            tuple: A tuple (first_name, surname).
+            str: The student's name matched from the registry.
         """
         base_name = os.path.splitext(os.path.basename(file_path))[0]
-        name_parts = base_name.split('-')
-        if len(name_parts) >= 2:
-            first_name, surname = [part.lower().capitalize() for part in name_parts[:2]]
-        else:
-            first_name, surname = base_name.lower().capitalize(), ""
-        return first_name, surname
+        first_name, surname = base_name.split('-')
+        extracted_name = f"{first_name.capitalize()} {surname.capitalize()}"
+        matched_name = match_student_name(extracted_name, self.registry)
+        return matched_name
 
     def run_evaluation(self) -> None:
         """
@@ -776,16 +828,15 @@ class DocxAssignmentEvaluator:
                     print(f"Error processing file {file}: {e}")
                     continue
 
-                first_name, surname = self.extract_student_name(student_file_path)
+                # Get matched student name
+                student_name = self.extract_student_name(student_file_path)
                 evaluation_results.append({
-                    "Name": first_name,
-                    "Surname": surname,
-                    "Score (%)": final_score
+                    "Student": student_name,
+                    "Score (%)": final_score if final_score > 0 else 0
                 })
 
-                individual_report_path = os.path.join(
-                    self.evaluations_dir, f"{first_name}-{surname}.md"
-                )
+                # Generate the individual report
+                individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
                 try:
                     with open(individual_report_path, "w") as report_file:
                         report_file.write(report)
@@ -794,12 +845,14 @@ class DocxAssignmentEvaluator:
 
                 print(f"Evaluation for {file}: {final_score:.1f}% (report at {individual_report_path})")
 
+        # --- Generate Global Report (CSV) ---
         try:
             with open(self.report_file, "w", newline="") as csvfile:
-                fieldnames = ["Name", "Surname", "Score (%)"]
+                fieldnames = ["Student", "Score (%)"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
-                for result in evaluation_results:
+                sorted_results = sorted(evaluation_results, key=lambda x: x["Student"].split()[-1])  # Sort by surname
+                for result in sorted_results:
                     writer.writerow(result)
             print(f"Overall Evaluation Report available at: {self.report_file}")
         except Exception as e:
@@ -813,15 +866,16 @@ def main():
     The first command-line argument must be the assignment identifier.
     Optionally, a second argument may specify the path to a JSON configuration file with weights and tolerances.
     """
-    if len(sys.argv) < 2:
-        print("Error: Please provide the assignment identifier as an input parameter.")
+    if len(sys.argv) < 3:
+        print("Error: Please provide the assignment identifier and the registry file path as input parameters.")
         return
 
     assignment_identifier = sys.argv[1]
     config = None
+    registry_path = sys.argv[2]
   
-    if len(sys.argv) >= 3:
-        config_file = sys.argv[2]
+    if len(sys.argv) >= 4:
+        config_file = sys.argv[3]
         try:
             with open(config_file, "r") as cf:
                 config = json.load(cf)
@@ -835,7 +889,7 @@ def main():
             print(f"Error reading configuration file '{config_file}': {e}")
             return
 
-    evaluator = DocxAssignmentEvaluator(assignment_identifier, config=config)
+    evaluator = DocxAssignmentEvaluator(assignment_identifier, config=config, registry_path=registry_path)
     evaluator.run_evaluation()
 
 

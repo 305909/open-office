@@ -782,7 +782,6 @@ class DocxAssignmentEvaluator:
         os.makedirs(self.evaluations_dir, exist_ok=True)
         return True
 
-    @staticmethod
     def extract_student_name(self, file_path: str) -> str:
         """
         Extract the student's name from the DOCX file name and match it against the registry.
@@ -814,49 +813,49 @@ class DocxAssignmentEvaluator:
         if not self.verify_resources():
             return
 
-        evaluation_results = []
+    evaluation_results = []
 
-        for file in os.listdir(self.assignment_folder):
-            if file.endswith(".docx") or file.endswith(".odt"):
-                student_file_path = os.path.join(self.assignment_folder, file)
-                # Convert ODT files to DOCX if needed
-                student_file_path = convert_odt_to_docx(student_file_path)
-                try:
-                    comparer = DocumentComparer(self.solution_file, student_file_path, config=self.config)
-                    report, final_score = comparer.compare_documents()
-                except Exception as e:
-                    print(f"Error processing file {file}: {e}")
-                    continue
+    for file in os.listdir(self.assignment_folder):
+        if file.endswith(".docx") or file.endswith(".odt"):
+            student_file_path = os.path.join(self.assignment_folder, file)
+            # Convert ODT files to DOCX if needed
+            student_file_path = convert_odt_to_docx(student_file_path)
+            try:
+                comparer = DocumentComparer(self.solution_file, student_file_path, config=self.config)
+                report, final_score = comparer.compare_documents()
+            except Exception as e:
+                print(f"Error processing file {file}: {e}")
+                continue
 
-                # Get matched student name
-                student_name = self.extract_student_name(student_file_path)
-                evaluation_results.append({
-                    "Student": student_name,
-                    "Score (%)": final_score if final_score > 0 else 0
-                })
+            # Get matched student name
+            student_name = self.extract_student_name(student_file_path)  # Works correctly now with 'self'
+            evaluation_results.append({
+                "Student": student_name,
+                "Score (%)": final_score if final_score > 0 else 0
+            })
 
-                # Generate the individual report
-                individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
-                try:
-                    with open(individual_report_path, "w") as report_file:
-                        report_file.write(report)
-                except Exception as e:
-                    print(f"Error writing report for file {file}: {e}")
+            # Generate the individual report
+            individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
+            try:
+                with open(individual_report_path, "w") as report_file:
+                    report_file.write(report)
+            except Exception as e:
+                print(f"Error writing report for file {file}: {e}")
 
-                print(f"Evaluation for {file}: {final_score:.1f}% (report at {individual_report_path})")
+            print(f"Evaluation for {file}: {final_score:.1f}% (report at {individual_report_path})")
 
-        # --- Generate Global Report (CSV) ---
-        try:
-            with open(self.report_file, "w", newline="") as csvfile:
-                fieldnames = ["Student", "Score (%)"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                sorted_results = sorted(evaluation_results, key=lambda x: x["Student"].split()[-1])  # Sort by surname
-                for result in sorted_results:
-                    writer.writerow(result)
-            print(f"Overall Evaluation Report available at: {self.report_file}")
-        except Exception as e:
-            print(f"Error writing CSV report: {e}")
+    # --- Generate Global Report (CSV) ---
+    try:
+        with open(self.report_file, "w", newline="") as csvfile:
+            fieldnames = ["Student", "Score (%)"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            sorted_results = sorted(evaluation_results, key=lambda x: x["Student"].split()[-1])  # Sort by surname
+            for result in sorted_results:
+                writer.writerow(result)
+        print(f"Overall Evaluation Report available at: {self.report_file}")
+    except Exception as e:
+        print(f"Error writing CSV report: {e}")
 
 
 def main():

@@ -73,12 +73,6 @@ def match_student_name(extracted_name: str, registry: dict) -> str:
         if ratio > best_ratio:
             best_match = student_name
             best_ratio = ratio
-
-    # If no match is found with high confidence, return a default or unknown name
-    if best_ratio < 0.75:
-        print(f"Warning: Low match for {extracted_name}. Using default name.")
-        return "UNKNOWN STUDENT"
-
     return best_match
 
 def convert_odt_to_docx(file_path: str) -> str:

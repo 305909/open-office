@@ -1,3 +1,3 @@
 # Report for GARETTI ALESSANDRA
 
-No submission, score: 0.0%
+No submission, score: 0%

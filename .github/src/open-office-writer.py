@@ -51,30 +51,6 @@ def load_student_registry(registry_path: str) -> dict:
         print(f"Error loading student registry: {e}")
         sys.exit(1)
 
-
-def match_student_name(extracted_name: str, registry: dict) -> str:
-    """
-    Match an extracted student name to the closest name in the registry.
-    
-    Args:
-        extracted_name (str): The name extracted from the file.
-        registry (dict): The student registry mapping IDs to names.
-        
-    Returns:
-        str: The matched student name.
-    """
-    # Convert the extracted name to uppercase for comparison
-    extracted_name_upper = extracted_name.upper()
-    best_match = None
-    best_ratio = 0.0
-
-    for student_id, student_name in registry.items():
-        ratio = difflib.SequenceMatcher(None, extracted_name_upper, student_name.upper()).ratio()
-        if ratio > best_ratio:
-            best_match = student_name
-            best_ratio = ratio
-    return best_match
-
 def convert_odt_to_docx(file_path: str) -> str:
     """
     Convert an ODT file to DOCX format using LibreOffice in headless mode.
@@ -754,7 +730,7 @@ class DocxAssignmentEvaluator:
             print(f"Error: Reference solution file in '{os.path.join(self.solutions_dir, self.assignment_id)}' is not available.")
             sys.exit(1)
 
-        self.report_file = os.path.join(self.evaluations_dir, f"Report.csv")
+        self.report_file = os.path.join(self.evaluations_dir, f"REPORT.csv")
         self.config = config
 
     def verify_resources(self) -> bool:
@@ -775,24 +751,6 @@ class DocxAssignmentEvaluator:
         os.makedirs(self.evaluations_dir, exist_ok=True)
         return True
 
-    def extract_student_name(self, file_path: str) -> str:
-        """
-        Extract the student's name from the DOCX file name and match it against the registry.
-        
-        Assumes the file name is formatted as "firstname-surname.odt".
-        
-        Args:
-            file_path (str): The path to the student's DOCX file.
-        
-        Returns:
-            str: The student's name matched from the registry.
-        """
-        base_name = os.path.splitext(os.path.basename(file_path))[0]
-        first_name, surname = base_name.split('-')
-        extracted_name = f"{first_name.capitalize()} {surname.capitalize()}"
-        matched_name = match_student_name(extracted_name, self.registry)
-        return matched_name
-
     def run_evaluation(self) -> None:
         """
         Execute the evaluation for each student submission in the assignment folder.
@@ -808,20 +766,33 @@ class DocxAssignmentEvaluator:
 
         evaluation_results = []
 
-        for file in os.listdir(self.assignment_folder):
-            if file.endswith(".docx") or file.endswith(".odt"):
-                student_file_path = os.path.join(self.assignment_folder, file)
+        for student_id, student_name in self.registry.items():
+            surname = student_name.split()[0].upper()
+
+            matched_file = None
+            for file in os.listdir(self.assignment_folder):
+                if file.endswith(".docx") or file.endswith(".odt"):
+                    file_name = os.path.splitext(os.path.basename(file))[0].upper()
+                    if file_name == surname:
+                        matched_file = file
+                        print(f"Submission for {student_name}: {file}")
+                        break
+                      
+            if matched_file:
+                student_file_path = os.path.join(self.assignment_folder, matched_file)
                 # Convert ODT files to DOCX if needed
                 student_file_path = convert_odt_to_docx(student_file_path)
                 try:
                     comparer = DocumentComparer(self.solution_file, student_file_path, config=self.config)
                     report, final_score = comparer.compare_documents()
                 except Exception as e:
-                    print(f"Error processing file {file}: {e}")
+                    print(f"Error processing file {matched_file}: {e}")
                     continue
+            else:
+                final_score = 0.0
+                report = f"# Report for {student_name}\n\nNo submission, score: {final_score}%\n"
+                print(f"No submission for {student_name}.")
 
-                # Get matched student name
-                student_name = self.extract_student_name(student_file_path)  # Works correctly now with 'self'
                 evaluation_results.append({
                     "Student": student_name,
                     "Score (%)": final_score if final_score > 0 else 0
@@ -835,7 +806,7 @@ class DocxAssignmentEvaluator:
                 except Exception as e:
                     print(f"Error writing report for file {file}: {e}")
 
-                print(f"Evaluation for {file}: {final_score:.1f}% (report at {individual_report_path})")
+                print(f"Evaluation for {student_name}: {final_score:.1f}% (report at {individual_report_path})")
 
         # --- Generate Global Report (CSV) ---
         try:

@@ -37,7 +37,7 @@ jobs:
         run: |
           CLASS=".github/classes/${{ github.event.inputs.class }}"
           PARAMS=".github/configs/${{ github.event.inputs.params }}.json"
-          python .github/src/open-office-writer.py "${{ github.event.inputs.assignment }}" "$CLASS" "$PARAMS"
+          python .github/scripts/open-office-writer.py "${{ github.event.inputs.assignment }}" "$CLASS" "$PARAMS"
 
       - name: Push and Commit
         run: |

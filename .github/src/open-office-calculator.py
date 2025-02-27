@@ -411,7 +411,7 @@ def main():
     assignment_identifier = sys.argv[1]
     registry_path = sys.argv[2]
   
-    evaluator = AssignmentEvaluator(assignment_identifier)
+    evaluator = AssignmentEvaluator(assignment_identifier, registry_path)
     evaluator.run_evaluation()
 
 

@@ -32,7 +32,7 @@ jobs:
       - name: Run Evaluation Script
         run: |
           CLASS=".github/classes/${{ github.event.inputs.class }}"
-          python .github/src/open-office-calculator.py "${{ github.event.inputs.assignment }}" "$CLASS"
+          python .github/scripts/open-office-calculator.py "${{ github.event.inputs.assignment }}" "$CLASS"
 
       - name: Push and Commit
         run: |

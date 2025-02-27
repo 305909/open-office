@@ -27,9 +27,33 @@ Date: 25.02.2025
 
 import os
 import sys
+import json
 import pandas as pd
 import subprocess
 
+
+def load_student_registry(registry_path: str) -> dict:
+    """
+    Load student registry from a JSON file.
+    
+    The registry is expected to be in the format:
+    {
+        "student_id": "Student Name"
+    }
+    
+    Args:
+        registry_path (str): Path to the JSON file containing student registry.
+
+    Returns:
+        dict: A dictionary with student IDs as keys and names as values.
+    """
+    try:
+        with open(registry_path, "r") as file:
+            registry = json.load(file)
+            return registry
+    except Exception as e:
+        print(f"Error loading student registry: {e}")
+        sys.exit(1)
 
 def convert_ods_to_csv(file_path: str) -> str:
     """
@@ -116,9 +140,10 @@ class StudentEvaluator:
     @staticmethod
     def evaluate_student_file(
         student_file: str,
+        student_name: str,
         solution_data: pd.DataFrame,
         assignment_data: pd.DataFrame
-    ) -> tuple[str, str, float, str]:
+    ) -> tuple[float, str]:
         """
         Evaluate a student's CSV submission by comparing it to the solution data on a
         cell-by-cell basis.
@@ -136,21 +161,15 @@ class StudentEvaluator:
 
         Args:
             student_file (str): The path to the student's CSV file.
+            student_name (str): The student's name.
             solution_data (pd.DataFrame): A DataFrame containing the correct solution values.
             assignment_data (pd.DataFrame): A DataFrame containing the assignment template values.
 
         Returns:
             tuple:
-                - The student's first name (capitalized).
-                - The student's surname (capitalized).
                 - The computed score percentage (rounded to two decimal places).
                 - A detailed Markdown report (str) documenting the cell-by-cell comparisons.
         """
-        # Extract the student's name from the filename assuming "firstname-surname.csv"
-        base_name = os.path.splitext(os.path.basename(student_file))[0]
-        name_parts = base_name.split('-')
-        student_first_name, student_last_name = [part.lower().capitalize() for part in name_parts]
-
         # Read the student's CSV file into a DataFrame
         student_data = CsvFileHandler.read_csv_file(student_file)
 
@@ -184,7 +203,7 @@ class StudentEvaluator:
         # Build the detailed Markdown report
         report_lines = []
         report_lines.append(
-            f"# Evaluation Report for {student_first_name} {student_last_name}\n"
+            f"# Evaluation Report for {student_name}\n"
         )
         report_lines.append("## Overview\n")
         report_lines.append(f"- **Total Evaluation Cells:** {total_evaluated_cells}")
@@ -197,7 +216,7 @@ class StudentEvaluator:
             report_lines.append("- No errors found.")
 
         detailed_report = "\n".join(report_lines)
-        return student_first_name, student_last_name, round(percentage, 2), detailed_report
+        return round(percentage, 2), detailed_report
 
 
 class AssignmentEvaluator:
@@ -212,7 +231,7 @@ class AssignmentEvaluator:
         - Creating an individual, detailed Markdown report for each student.
     """
 
-    def __init__(self, assignment_arg: str = None):
+    def __init__(self, assignment_arg: str, registry_path: str):
         """
         Initialize the AssignmentEvaluator using the provided assignment identifier.
 
@@ -227,6 +246,7 @@ class AssignmentEvaluator:
         self.solutions_directory = "solutions"
         self.evaluations_directory = "evaluations"
         self.assignment = assignment_arg
+        self.registry = load_student_registry(registry_path)
 
         if not self.assignment:
             print("Error: Assignment identifier is mandatory.")
@@ -275,7 +295,7 @@ class AssignmentEvaluator:
             sys.exit(1)
 
         # Define the path for the consolidated CSV report
-        self.report_file = os.path.join(self.evaluation_subfolder, f"Report.csv")
+        self.report_file = os.path.join(self.evaluation_subfolder, f"REPORT.csv")
 
     def verify_resources(self) -> bool:
         """
@@ -327,31 +347,55 @@ class AssignmentEvaluator:
         evaluation_results = []
 
         # Process each student file found in the assignment folder.
-        for file in os.listdir(self.assignment_folder):
-            if file.endswith(".csv") or file.endswith(".ods"):
-                student_file_path = os.path.join(self.assignment_folder, file)
-                if file.lower().endswith(".ods"):
+        for student_id, student_name in self.registry.items():
+            surname = student_name.split()[1].upper()
+            
+            matched_file = None
+            for file in os.listdir(self.assignment_folder):
+                if file.endswith(".csv") or file.endswith(".ods"):
+                    file_name = os.path.splitext(os.path.basename(file))[0].upper()
+                    if file_name == surname:
+                        matched_file = file
+                        print(f"Submission for {student_name}: {file}")
+                        break
+                        
+            if matched_file:
+                student_file_path = os.path.join(self.assignment_folder, matched_file)
+                if student_file_path.lower().endswith(".ods"):
                     student_file_path = convert_ods_to_csv(student_file_path)
-                first_name, last_name, score, detailed_report = StudentEvaluator.evaluate_student_file(
-                    student_file_path, solution_data, assignment_data
-                )
-                evaluation_results.append({
-                    "Name": first_name,
-                    "Surname": last_name,
-                    "Score (%)": score
-                })
-                print(f"Assessment {file}: {score}%")
-
-                individual_report_filename = f"{first_name}-{last_name}.md"
-                individual_report_path = os.path.join(self.evaluation_subfolder, individual_report_filename)
-                with open(individual_report_path, "w", encoding="utf-8") as md_file:
-                    md_file.write(detailed_report)
-                print(f"Detailed report generated for {file}: {individual_report_path}")
+                try:
+                    score, report = StudentEvaluator.evaluate_student_file(
+                        student_file_path, student_name, solution_data, solution_data  # Passing student_name
+                    )
+                    print(f"Evaluation for {student_name}: {score}%")
+                except Exception as e:
+                    print(f"Error processing file {matched_file}: {e}")
+                    continue
+                    
+            else:
+                score = 0.0
+                report = f"# Report for {student_name}\n\nNo submission, score: {score}%\n"
+                print(f"No submission for {student_name}.")
+        
+            evaluation_results.append({
+                "Student": student_name,
+                "Score (%)": score
+            })
+          
+            # Generate the individual report
+            individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
+            try:
+                with open(individual_report_path, "w") as report_file:
+                    report_file.write(report)
+            except Exception as e:
+                print(f"Error writing report for file {file}: {e}")
+            
+            print(f"Evaluation for {student_name}: {score:.1f}% (report at {individual_report_path})")
 
         # Create a consolidated CSV report with all evaluation results
         report_dataframe = pd.DataFrame(evaluation_results)
         report_dataframe.to_csv(self.report_file, index=False)
-        print(f"Consolidated Evaluation Report generated at: {self.report_file}")
+        print(f"Overall Evaluation Report available at: {self.report_file}")
 
 
 def main():
@@ -360,7 +404,12 @@ def main():
 
     The assignment identifier is obtained from the command-line arguments.
     """
-    assignment_identifier = sys.argv[1] if len(sys.argv) > 1 else None
+    if len(sys.argv) < 3:
+        print("Error: Please provide the assignment identifier and the registry file path.")
+        return
+        
+    assignment_identifier = sys.argv[1]
+    registry_path = sys.argv[2]
   
     evaluator = AssignmentEvaluator(assignment_identifier)
     evaluator.run_evaluation()

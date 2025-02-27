@@ -348,7 +348,7 @@ class AssignmentEvaluator:
 
         # Process each student file found in the assignment folder.
         for student_id, student_name in self.registry.items():
-            surname = student_name.split()[1].upper()
+            surname = student_name.split()[0].upper()
             
             matched_file = None
             for file in os.listdir(self.assignment_folder):

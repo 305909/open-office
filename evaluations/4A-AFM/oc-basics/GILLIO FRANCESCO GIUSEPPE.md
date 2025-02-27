@@ -2,10 +2,18 @@
 
 ## Overview
 
-- **Total Evaluation Cells:** 0
-- **Correct Answers:** 0
-- **Final Score:** 0%
+- **Total Evaluation Cells:** 65
+- **Correct Answers:** 62
+- **Final Score:** 95.38%
 
 ## Errors
 
-- No errors found.
+- **Cell (31, 6) mismatch:**
+  - **Result:** `22626,84`
+  - **Student Submission:** ``
+- **Cell (32, 6) mismatch:**
+  - **Result:** `25437,33`
+  - **Student Submission:** ``
+- **Cell (33, 6) mismatch:**
+  - **Result:** `39884,98`
+  - **Student Submission:** ``

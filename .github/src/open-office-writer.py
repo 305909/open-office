@@ -793,20 +793,20 @@ class DocxAssignmentEvaluator:
                 report = f"# Report for {student_name}\n\nNo submission, score: {final_score}%\n"
                 print(f"No submission for {student_name}.")
 
-                evaluation_results.append({
-                    "Student": student_name,
-                    "Score (%)": final_score if final_score > 0 else 0
-                })
-
-                # Generate the individual report
-                individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
-                try:
-                    with open(individual_report_path, "w") as report_file:
-                        report_file.write(report)
-                except Exception as e:
-                    print(f"Error writing report for file {file}: {e}")
-
-                print(f"Evaluation for {student_name}: {final_score:.1f}% (report at {individual_report_path})")
+            evaluation_results.append({
+                "Student": student_name,
+                "Score (%)": final_score
+            })
+          
+            # Generate the individual report
+            individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
+            try:
+                with open(individual_report_path, "w") as report_file:
+                    report_file.write(report)
+            except Exception as e:
+                print(f"Error writing report for file {file}: {e}")
+            
+            print(f"Evaluation for {student_name}: {final_score:.1f}% (report at {individual_report_path})")
 
         # --- Generate Global Report (CSV) ---
         try:

@@ -383,7 +383,7 @@ class AssignmentEvaluator:
             })
           
             # Generate the individual report
-            individual_report_path = os.path.join(self.evaluations_dir, f"{student_name}.md")
+            individual_report_path = os.path.join(self.evaluations_directory, f"{student_name}.md")
             try:
                 with open(individual_report_path, "w") as report_file:
                     report_file.write(report)

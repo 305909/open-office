@@ -795,7 +795,7 @@ class DocxAssignmentEvaluator:
 
             evaluation_results.append({
                 "Student": student_name,
-                "Score (%)": final_score
+                "Score (%)": round(final_score, 2)
             })
           
             # Generate the individual report

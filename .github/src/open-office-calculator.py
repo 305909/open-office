@@ -365,7 +365,7 @@ class AssignmentEvaluator:
                     student_file_path = convert_ods_to_csv(student_file_path)
                 try:
                     score, report = StudentEvaluator.evaluate_student_file(
-                        student_file_path, student_name, solution_data, solution_data  # Passing student_name
+                        student_file_path, student_name, solution_data, assignment_data
                     )
                     print(f"Evaluation for {student_name}: {score}%")
                 except Exception as e:

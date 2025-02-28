@@ -564,7 +564,7 @@ def main():
 
     evaluator = DocxAssignmentEvaluator(assignment_identifier, config=config, registry_path=registry_path)
     evaluator.run_evaluation()
-https://github.com/305909/open-office/compare/822bb15f7c887ff03caf2e074aaae50a5bfe4916...89ccb2c75d8b74b69822ab1cce6757b4fb9c18bc#diff-19c8cb279fbf6b0ee03f92c8b3d069134a9f558833ce2685203119a94bf7f0c9
+
 
 if __name__ == "__main__":
     main()

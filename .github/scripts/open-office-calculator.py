@@ -188,7 +188,6 @@ class AssignmentEvaluator:
             student_file = self._find_student_submission(student_name)
 
             if student_file:
-                print(f"Submission for {student_name}: {file}")
                 student_file_path = os.path.join(self.assignment_folder, student_file)
                 if student_file_path.lower().endswith(".ods"):
                     student_file_path = convert_ods_to_csv(student_file_path)
@@ -224,6 +223,7 @@ class AssignmentEvaluator:
         for file in os.listdir(self.assignment_folder):
             if file.endswith(".csv") or file.endswith(".ods"):
                 if os.path.splitext(os.path.basename(file))[0].upper() == surname:
+                    print(f"Submission for {student_name}: {file}")
                     return file
         return None
 

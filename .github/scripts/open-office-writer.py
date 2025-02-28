@@ -2,13 +2,6 @@
 """
 DOCX Assignment Evaluator for the OpenOffice Writer Course at "I.I.S. G. Cena di Ivrea".
 
-This module is designed to evaluate DOCX assignment submissions by comparing student files with a reference solution.
-It supports configurable weights and tolerances, and automatically converts ODT files to DOCX using LibreOffice in headless mode.
-
-External Parameters:
-  - A JSON configuration file containing weight and tolerance values.
-  - A reference subfolder containing the solution files for evaluation.
-
 Author: Francesco Giuseppe Gillio
 Date: 25.02.2025
 """
@@ -17,6 +10,7 @@ import os
 import io
 import sys
 import csv
+import ast
 import json
 import difflib
 import zipfile
@@ -27,41 +21,18 @@ from docx import Document
 
 
 def load_student_registry(registry_path: str) -> dict:
-    """
-    Load the student registry from a JSON file.
-
-    The registry file should contain student IDs as keys and student names as values.
-    
-    Args:
-        registry_path (str): Path to the JSON file containing the student registry.
-
-    Returns:
-        dict: A dictionary with student IDs as keys and student names as values.
-
-    Raises:
-        SystemExit: If an error occurs while loading the registry.
-    """
+  
     try:
         with open(registry_path, "r") as file:
             registry = json.load(file)
             return registry
     except Exception as e:
-        print(f"Error loading student registry: {e}")
+        print(f"Unable to load registry {registry_path}: {e}")
         sys.exit(1)
 
 
 def convert_odt_to_docx(file_path: str) -> str:
-    """
-    Convert an ODT file to DOCX format using LibreOffice in headless mode.
-
-    If the provided file is not in ODT format, the original file path is returned.
-    
-    Args:
-        file_path (str): The path to the ODT file to be converted.
-
-    Returns:
-        str: The path to the converted DOCX file, or the original file path if conversion fails.
-    """
+  
     if not file_path.lower().endswith(".odt"):
         return file_path
     docx_file_path = file_path.rsplit('.', 1)[0] + '.docx'
@@ -82,36 +53,14 @@ def convert_odt_to_docx(file_path: str) -> str:
         )
         return docx_file_path
     except Exception as e:
-        print(f"Error converting file {file_path}: {e}")
+        print(f"Unable to convert ODT file {file_path}: {e}")
         return file_path
 
 
 class DocumentAnalyzer:
-    """
-    Analyzes the content of DOCX documents, extracting details such as paragraphs, images, tables, and margins.
-
-    This class provides methods to extract and parse different components of a DOCX document:
-    - Paragraphs: including text, length, style, formatting (bold, italic, underline), font details, and alignment.
-    - Images: including format and dimensions.
-    - Tables: including row and column count.
-    - Margins: extracted from the underlying XML structure of the document.
-
-    Dependencies:
-      - python-docx: for interacting with DOCX files.
-      - lxml: for parsing the XML structure.
-      - Pillow: for image processing and analysis.
-    """
 
     def __init__(self, file_path: str):
-        """
-        Initialize the DocumentAnalyzer with a provided DOCX file.
 
-        Args:
-            file_path (str): The path to the DOCX file to be analyzed.
-        
-        Raises:
-            ValueError: If the DOCX file cannot be loaded.
-        """
         self.docx_path = file_path
         try:
             self.doc = Document(file_path)
@@ -119,15 +68,7 @@ class DocumentAnalyzer:
             raise ValueError(f"Unable to load DOCX file '{file_path}': {e}")
 
     def get_paragraph_alignment(self, paragraph) -> str:
-        """
-        Determine the alignment of a given paragraph.
-
-        Args:
-            paragraph: The paragraph object from the DOCX document.
-
-        Returns:
-            str: The alignment type (one of "left", "center", "right", "justified", or "unknown").
-        """
+    
         alignment_map = {0: "left", 1: "center", 2: "right", 3: "justified"}
         try:
             alignment = paragraph.alignment
@@ -136,17 +77,7 @@ class DocumentAnalyzer:
             return "unknown"
 
     def get_paragraphs_info(self) -> tuple[list[dict], int]:
-        """
-        Extract detailed information from each paragraph in the document.
 
-        This includes text, length, style, formatting attributes (bold, italic, underline), font names,
-        sizes, and alignment. Additionally, it counts the number of empty paragraphs.
-
-        Returns:
-            tuple: A tuple containing:
-                - A list of dictionaries with paragraph information.
-                - An integer count of empty paragraphs.
-        """
         paragraphs_data = []
         empty_lines_count = 0
 
@@ -170,23 +101,13 @@ class DocumentAnalyzer:
                     "alignment": self.get_paragraph_alignment(paragraph)
                 }
             except Exception as e:
-                paragraph_info = {"text": text, "error": f"Error processing paragraph: {e}"}
+                paragraph_info = {"text": text, "error": f"Unable to process paragraph {paragraph}: {e}"}
             paragraphs_data.append(paragraph_info)
 
         return paragraphs_data, empty_lines_count
 
     def get_images_info(self) -> list[dict]:
-        """
-        Retrieve details about images embedded in the DOCX document.
 
-        This method checks the document's relationships for image parts and uses Pillow to obtain the
-        image format and dimensions.
-
-        Returns:
-            list: A list of dictionaries, each containing:
-                - "format": Image format (e.g., JPEG, PNG).
-                - "dimensions": Image dimensions (width, height).
-        """
         images_data = []
         for rel in self.doc.part.rels:
             if "image" in self.doc.part.rels[rel].target_ref:
@@ -200,19 +121,12 @@ class DocumentAnalyzer:
                         })
                 except Exception as e:
                     images_data.append({
-                        "error": f"Error processing image in relation {rel}: {e}"
+                        "error": f"Unable to process image in relation {rel}: {e}"
                     })
         return images_data
 
     def get_tables_info(self) -> list[dict]:
-        """
-        Extract table information from the DOCX document.
 
-        This method calculates the number of rows and columns in each table.
-
-        Returns:
-            list: A list of dictionaries containing the number of rows and columns for each table.
-        """
         tables_data = []
         for table in self.doc.tables:
             try:
@@ -224,21 +138,12 @@ class DocumentAnalyzer:
                 })
             except Exception as e:
                 tables_data.append({
-                    "error": f"Error processing table: {e}"
+                    "error": f"Unable to process table {table}: {e}"
                 })
         return tables_data
 
     def get_margins(self) -> dict:
-        """
-        Extract margin configurations from the DOCX document using its XML structure.
 
-        This method opens the DOCX file as a ZIP archive and parses the "word/document.xml" file
-        to extract the margin settings from the "pgMar" element.
-
-        Returns:
-            dict: A dictionary containing margin attributes (top, bottom, left, right), or an empty
-                  dictionary if margins cannot be extracted.
-        """
         margins_data = {}
         try:
             with zipfile.ZipFile(self.docx_path, "r") as docx_zip:
@@ -249,84 +154,24 @@ class DocumentAnalyzer:
                     if page_margins:
                         margins_data = {attr: page_margins[0].get(attr) for attr in page_margins[0].keys()}
         except Exception as e:
-            margins_data = {"error": f"Error extracting margins: {e}"}
+            margins_data = {"error": f"Unable to extract margins: {e}"}
         return margins_data
 
 
 class DocumentComparer:
-    """
-    Compares two DOCX documents based on their structure and formatting.
-
-    This class uses the DocumentAnalyzer to extract features from both a reference document
-    and a student submission, comparing components such as paragraphs, images, tables, and margins.
-    A matching percentage and a detailed report are generated for each section.
-
-    The comparison includes:
-      - Paragraph text and formatting
-      - Image formats and dimensions
-      - Table row and column counts
-      - Margin settings
-    """
 
     def __init__(self, reference_file: str, test_file: str, config: dict = None):
-        """
-        Initialize the DocumentComparer with a reference and a student submission.
 
-        Args:
-            reference_file (str): Path to the reference DOCX file.
-            test_file (str): Path to the student submission DOCX file.
-            config (dict, optional): Configuration dictionary containing weights and tolerances.
-        """
         self.reference_analyzer = DocumentAnalyzer(reference_file)
         self.test_analyzer = DocumentAnalyzer(test_file)
-        self.config = config or {
-            "weights": {
-                "paragraphs": 0.35,
-                "images": 0.25,
-                "tables": 0.15,
-                "margins": 0.25
-            },
-            "tolerances": {
-                "empty_lines": 0,
-                "paragraph_similarity_threshold": 1.00,
-                "paragraph_bonus": 0,
-                "image_dimension_tolerance": 0,
-                "table_rows_tolerance": 0,
-                "table_columns_tolerance": 0,
-                "margin_tolerance": 0
-            }
-        }
+        self.config = config
 
     def assign_score(self, correct: int, total: int) -> float:
-        """
-        Compute the percentage score for a section based on the number of correct matches.
 
-        Args:
-            correct (int): The number of correct matches.
-            total (int): The total number of items compared.
-
-        Returns:
-            float: The score percentage (0 to 100).
-        """
-        return (correct / total) * 100.0 if total else 100.0
+        return (correct / total) * 100.0 if total != 0 else 100.0
 
     def compare_elements(self, reference_elements: list, test_elements: list, element_name: str) -> tuple[list[str], float]:
-        """
-        Compare two lists of elements (e.g., images, tables, margins) between documents.
 
-        This method applies tolerance values to compute a match percentage for element types
-        like images and tables, or performs exact comparisons for other elements.
-
-        Args:
-            reference_elements (list): List of elements from the reference document.
-            test_elements (list): List of elements from the student submission.
-            element_name (str): The name of the element being compared (e.g., "image", "table", "margins").
-
-        Returns:
-            tuple: A tuple containing:
-                - A list of strings describing the differences.
-                - A match percentage score for the element type.
-        """
         differences_list = []
         total_elements = len(reference_elements)
 
@@ -337,139 +182,192 @@ class DocumentComparer:
 
         sum_score = 0.0
         for index, (ref_elem, test_elem) in enumerate(zip(reference_elements, test_elements)):
-            element_score = self.compare_element(ref_elem, test_elem, element_name, index)
+            element_score = 0.0
+          
+            if element_name.lower() == "image":
+                tol = self.config.get("tolerances", {}).get("image_dimension_tolerance", 0)
+                sub_total = 3
+                sub_matches = 0
+                if ref_elem.get("format") == test_elem.get("format"):
+                    sub_matches += 1
+                ref_dim = ref_elem.get("dimensions")
+                test_dim = test_elem.get("dimensions")
+                if ref_dim and test_dim and len(ref_dim) == 2 and len(test_dim) == 2:
+                    if abs(ref_dim[0] - test_dim[0]) <= tol:
+                        sub_matches += 1
+                    if abs(ref_dim[1] - test_dim[1]) <= tol:
+                        sub_matches += 1
+                element_score = (sub_matches / sub_total) * 100
+
+                if element_score < 100:
+                    diff_entry = [
+                        f"- **Image {index + 1} mismatch:**",
+                        "  - **Differences:**"
+                    ]
+                    if ref_elem.get("format") != test_elem.get("format"):
+                        diff_entry.append("    - **Format:**")
+                        diff_entry.append(f"      - **Reference:** {ref_elem.get('format')}")
+                        diff_entry.append(f"      - **Student Submission:** {test_elem.get('format')}")
+                    if ref_dim and test_dim:
+                        if abs(ref_dim[0] - test_dim[0]) > tol:
+                            diff_entry.append("    - **Width:**")
+                            diff_entry.append(f"      - **Reference:** {ref_dim[0]}")
+                            diff_entry.append(f"      - **Student Submission:** {test_dim[0]}")
+                        if abs(ref_dim[1] - test_dim[1]) > tol:
+                            diff_entry.append("    - **Height:**")
+                            diff_entry.append(f"      - **Reference:** {ref_dim[1]}")
+                            diff_entry.append(f"      - **Student Submission:** {test_dim[1]}")
+                    differences_list.append("\n".join(diff_entry))
+
+            elif element_name.lower() == "table":
+                tol_rows = self.config.get("tolerances", {}).get("table_rows_tolerance", 0)
+                tol_cols = self.config.get("tolerances", {}).get("table_columns_tolerance", 0)
+                sub_total = 2
+                sub_matches = 0
+                ref_rows = ref_elem.get("rows")
+                test_rows = test_elem.get("rows")
+                if ref_rows is not None and test_rows is not None:
+                    if abs(ref_rows - test_rows) <= tol_rows:
+                        sub_matches += 1
+                ref_cols = ref_elem.get("columns")
+                test_cols = test_elem.get("columns")
+                if ref_cols is not None and test_cols is not None:
+                    if abs(ref_cols - test_cols) <= tol_cols:
+                        sub_matches += 1
+                element_score = (sub_matches / sub_total) * 100
+
+                if element_score < 100:
+                    diff_entry = [
+                        f"- **Table {index + 1} mismatch:**",
+                        "  - **Differences:**"
+                    ]
+                    if ref_rows is not None and test_rows is not None:
+                        if abs(ref_rows - test_rows) > tol_rows:
+                            diff_entry.append("    - **Rows:**")
+                            diff_entry.append(f"      - **Reference:** {ref_rows}")
+                            diff_entry.append(f"      - **Student Submission:** {test_rows}")
+                    if ref_cols is not None and test_cols is not None:
+                        if abs(ref_cols - test_cols) > tol_cols:
+                            diff_entry.append("    - **Columns:**")
+                            diff_entry.append(f"      - **Reference:** {ref_cols}")
+                            diff_entry.append(f"      - **Student Submission:** {test_cols}")
+                    differences_list.append("\n".join(diff_entry))
+
+            elif element_name.lower() == "margins":
+                tol_margin = self.config.get("tolerances", {}).get("margin_tolerance", 0)
+                sub_keys = list(ref_elem.keys())
+                sub_total = len(sub_keys)
+                sub_matches = 0
+                for key in sub_keys:
+                    try:
+                        ref_val = int(ref_elem.get(key))
+                        test_val = int(test_elem.get(key))
+                        if abs(ref_val - test_val) <= tol_margin:
+                            sub_matches += 1
+                    except Exception:
+                        pass
+                element_score = (sub_matches / sub_total) * 100 if sub_total > 0 else 100
+
+                if element_score < 100:
+                    diff_entry = [
+                        f"- **Margins mismatch:**",
+                        "  - **Differences:**"
+                    ]
+                    for key in sub_keys:
+                        try:
+                            ref_val = int(ref_elem.get(key))
+                            test_val = int(test_elem.get(key))
+                            if abs(ref_val - test_val) > tol_margin:
+                                diff_entry.append(f"    - **{key.capitalize()}**:")
+                                diff_entry.append(f"      - **Reference:** {ref_val}")
+                                diff_entry.append(f"      - **Student Submission:** {test_val}")
+                        except Exception as e:
+                            diff_entry.append(f"    - **{key.capitalize()}**: error comparing values: {e}")
+                    differences_list.append("\n".join(diff_entry))
+
+            else:
+                match = (ref_elem == test_elem)
+                element_score = 100 if match else 0
+                if not match:
+                    diff_entry = [
+                        f"- **{element_name.capitalize()} {index + 1} mismatch:**",
+                        "  - **Differences:**"
+                    ]
+                    if isinstance(ref_elem, dict) and isinstance(test_elem, dict):
+                        for key in ref_elem.keys():
+                            if key in test_elem and ref_elem[key] != test_elem[key]:
+                                diff_entry.append(f"    - **{key.capitalize()}**:")
+                                diff_entry.append(f"      - **Reference:** {ref_elem[key]}")
+                                diff_entry.append(f"      - **Student Submission:** {test_elem[key]}")
+                    else:
+                        diff_entry.append(f"    - **Reference:** {ref_elem}")
+                        diff_entry.append(f"    - **Student Submission:** {test_elem}")
+                    differences_list.append("\n".join(diff_entry))
             sum_score += element_score
 
         overall_score = sum_score / total_elements
         return differences_list, overall_score
 
-    def compare_element(self, ref_elem, test_elem, element_name, index) -> float:
-        """
-        Compare a single element between the reference and student submission.
-        
-        The logic of this comparison varies depending on the type of element being compared.
+    def compare_paragraphs(self, ref_paragraphs: list[dict], test_paragraphs: list[dict]) -> tuple[list[str], float]:
 
-        Args:
-            ref_elem: The element from the reference document.
-            test_elem: The element from the student submission.
-            element_name (str): The type of element (e.g., "image", "table", "margins").
-            index (int): The index of the element in the list.
+        differences = []
+        total_score = 0
+        count_ref = len(ref_paragraphs)
 
-        Returns:
-            float: The match percentage for the element.
-        """
-        if element_name.lower() == "image":
-            return self.compare_image(ref_elem, test_elem, index)
-        elif element_name.lower() == "table":
-            return self.compare_table(ref_elem, test_elem, index)
-        elif element_name.lower() == "margins":
-            return self.compare_margins(ref_elem, test_elem)
-        else:
-            return self.compare_general(ref_elem, test_elem)
+        if count_ref == 0 and len(test_paragraphs) == 0:
+            return differences, 100.0
+        if count_ref == 0 or len(test_paragraphs) == 0:
+            return differences, 0.0
 
-    def compare_image(self, ref_elem, test_elem, index) -> float:
-        """
-        Compare two images (reference vs test) by their format and dimensions.
+        min_count = min(count_ref, len(test_paragraphs))
+        for i in range(min_count):
+            ref_p = ref_paragraphs[i]
+            test_p = test_paragraphs[i]
 
-        Args:
-            ref_elem (dict): The reference image data.
-            test_elem (dict): The student submission image data.
-            index (int): The index of the image.
+            text_similarity = difflib.SequenceMatcher(None, ref_p.get("text", ""), test_p.get("text", "")).ratio()
+            formatting_attributes = ["style", "bold", "italic", "underline", "alignment", "font", "size"]
+            formatting_matches = sum(
+                1 for attr in formatting_attributes if ref_p.get(attr) == test_p.get(attr)
+            )
+            formatting_similarity = formatting_matches / len(formatting_attributes)
 
-        Returns:
-            float: The match percentage for the image.
-        """
-        tolerance = self.config.get("tolerances", {}).get("image_dimension_tolerance", 0)
-        sub_total = 3  # Compare format, width, and height
-        sub_matches = 0
+            paragraph_score = 0.5 * text_similarity + 0.5 * formatting_similarity
+            total_score += paragraph_score * 100
+            threshold = self.config.get("tolerances", {}).get("paragraph_similarity_threshold", 0.8)
 
-        if ref_elem.get("format") == test_elem.get("format"):
-            sub_matches += 1
-        
-        ref_dim = ref_elem.get("dimensions")
-        test_dim = test_elem.get("dimensions")
-        if ref_dim and test_dim and len(ref_dim) == 2 and len(test_dim) == 2:
-            if abs(ref_dim[0] - test_dim[0]) <= tolerance:
-                sub_matches += 1
-            if abs(ref_dim[1] - test_dim[1]) <= tolerance:
-                sub_matches += 1
+            if paragraph_score < threshold:
+                diff_entry = [
+                    f"- **Paragraph {i + 1} mismatch:**",
+                    f"  - **Text Similarity:** {text_similarity * 100:.1f}%",
+                    f"  - **Format Similarity:** {formatting_similarity * 100:.1f}%",
+                    "  - **Differences:**"
+                ]
+                for attr in ["text", "length", "style", "bold", "italic", "underline", "alignment"]:
+                    ref_val = ref_p.get(attr)
+                    test_val = test_p.get(attr)
+                    if ref_val != test_val:
+                        diff_entry.append(f"    - **{attr.capitalize()}**:")
+                        diff_entry.append(f"      - **Reference:** {ref_val}")
+                        diff_entry.append(f"      - **Student Submission:** {test_val}")
+                differences.append("\n".join(diff_entry))
 
-        return (sub_matches / sub_total) * 100
+        extra = count_ref - min_count
+        if extra > 0:
+            differences.append(f"{extra} additional paragraph(s) in reference with no match in the test.")
 
-    def compare_table(self, ref_elem, test_elem, index) -> float:
-        """
-        Compare two tables by their row and column counts.
+        average_score = total_score / count_ref
 
-        Args:
-            ref_elem (dict): The reference table data.
-            test_elem (dict): The student submission table data.
-            index (int): The index of the table.
+        _, ref_empty = self.reference_analyzer.get_paragraphs_info()
+        _, test_empty = self.test_analyzer.get_paragraphs_info()
+        tolerance_empty = self.config.get("tolerances", {}).get("empty_lines", 1)
+        if abs(ref_empty - test_empty) <= tolerance_empty:
+            bonus = self.config.get("tolerances", {}).get("paragraph_bonus", 10)
+            average_score = min(average_score + bonus, 100)
 
-        Returns:
-            float: The match percentage for the table.
-        """
-        tolerance_rows = self.config.get("tolerances", {}).get("table_rows_tolerance", 0)
-        tolerance_cols = self.config.get("tolerances", {}).get("table_columns_tolerance", 0)
-        sub_total = 2  # Compare rows and columns
-        sub_matches = 0
-
-        if abs(ref_elem.get("rows") - test_elem.get("rows")) <= tolerance_rows:
-            sub_matches += 1
-        if abs(ref_elem.get("columns") - test_elem.get("columns")) <= tolerance_cols:
-            sub_matches += 1
-
-        return (sub_matches / sub_total) * 100
-
-    def compare_margins(self, ref_elem, test_elem) -> float:
-        """
-        Compare two margin configurations.
-
-        Args:
-            ref_elem (dict): The reference margin data.
-            test_elem (dict): The student submission margin data.
-
-        Returns:
-            float: The match percentage for the margins.
-        """
-        tolerance = self.config.get("tolerances", {}).get("margin_tolerance", 0)
-        sub_keys = list(ref_elem.keys())
-        sub_total = len(sub_keys)
-        sub_matches = 0
-
-        for key in sub_keys:
-            try:
-                ref_val = int(ref_elem.get(key))
-                test_val = int(test_elem.get(key))
-                if abs(ref_val - test_val) <= tolerance:
-                    sub_matches += 1
-            except ValueError:
-                pass
-
-        return (sub_matches / sub_total) * 100 if sub_total > 0 else 100
-
-    def compare_general(self, ref_elem, test_elem) -> float:
-        """
-        Compare general elements using exact equality.
-
-        Args:
-            ref_elem: The reference element.
-            test_elem: The student submission element.
-
-        Returns:
-            float: 100 if equal, 0 otherwise.
-        """
-        return 100.0 if ref_elem == test_elem else 0.0
+        return differences, average_score
 
     def generate_markdown_report(self, report_lines: list[str]) -> str:
-        """
-        Generate a Markdown-formatted report from a list of report lines.
 
-        Args:
-            report_lines (list[str]): List of report lines.
-
-        Returns:
-            str: The generated Markdown report.
-        """
         markdown_report = "# Evaluation Report\n\n"
         
         for line in report_lines:
@@ -497,18 +395,7 @@ class DocumentComparer:
         return markdown_report
 
     def compare_documents(self) -> tuple[str, float]:
-        """
-        Compare the reference and test DOCX documents section by section.
 
-        This method evaluates:
-          - Paragraphs: by assessing text and formatting similarity.
-          - Images, Tables, and Margins: by directly comparing extracted elements.
-
-        The final score is calculated based on configured weights, and a detailed Markdown report is generated.
-
-        Returns:
-            tuple: The Markdown report (str) and the final overall score (float).
-        """
         report_lines = []
 
         ref_paragraphs, _ = self.reference_analyzer.get_paragraphs_info()
@@ -559,21 +446,9 @@ class DocumentComparer:
 
 
 class DocxAssignmentEvaluator:
-    """
-    Evaluates student DOCX assignments based on a reference solution.
-
-    This class compares each student's submission against the reference solution using the DocumentComparer
-    and generates individual Markdown reports for each student. It also compiles an overall CSV report.
-    """
 
     def __init__(self, assignment_identifier: str, config: dict = None, registry_path: str = None):
-        """
-        Initialize the evaluator for a specific assignment.
 
-        Args:
-            assignment_identifier (str): Unique identifier for the assignment.
-            config (dict, optional): Configuration dictionary containing weights and tolerances.
-        """
         self.assignment_id = assignment_identifier
         self.registry = load_student_registry(registry_path)  # Load student registry
         self.assignments_dir = "assignments"
@@ -595,12 +470,7 @@ class DocxAssignmentEvaluator:
         self.config = config
 
     def verify_resources(self) -> bool:
-        """
-        Verify the existence of the necessary files and directories for evaluation.
 
-        Returns:
-            bool: True if all required resources exist, otherwise False.
-        """
         if not os.path.exists(self.assignment_folder):
             print(f"Error: Assignment folder '{self.assignment_folder}' is not available.")
             return False
@@ -613,12 +483,7 @@ class DocxAssignmentEvaluator:
         return True
 
     def run_evaluation(self) -> None:
-        """
-        Run the evaluation process for each student submission.
 
-        The method converts ODT files to DOCX, compares each student's submission against the reference solution,
-        and generates individual Markdown reports. A final CSV report summarizing all results is also generated.
-        """
         if not self.verify_resources():
             return
 
@@ -678,12 +543,7 @@ class DocxAssignmentEvaluator:
 
 
 def main():
-    """
-    Main function to run the assignment evaluation process.
-    
-    The first command-line argument specifies the assignment identifier,
-    and the second argument specifies the path to the student registry file.
-    """
+
     if len(sys.argv) < 3:
         print("Error: Please provide the assignment identifier and the registry file path as input parameters.")
         return
@@ -704,7 +564,7 @@ def main():
 
     evaluator = DocxAssignmentEvaluator(assignment_identifier, config=config, registry_path=registry_path)
     evaluator.run_evaluation()
-
+https://github.com/305909/open-office/compare/822bb15f7c887ff03caf2e074aaae50a5bfe4916...89ccb2c75d8b74b69822ab1cce6757b4fb9c18bc#diff-19c8cb279fbf6b0ee03f92c8b3d069134a9f558833ce2685203119a94bf7f0c9
 
 if __name__ == "__main__":
     main()

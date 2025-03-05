@@ -255,7 +255,8 @@ class DocumentComparer:
                     differences_list.append("\n".join(diff_entry))
 
             elif element_name.lower() == "margins":
-                tol_margin = self.config.get("tolerances", {}).get("margin_tolerance", 0)
+                tol_margin_cm = self.config.get("tolerances", {}).get("margin_tolerance", 0)
+                tol_margin = tol_margin_cm * 1000
                 sub_keys = list(ref_elem.keys())
                 sub_total = len(sub_keys)
                 sub_matches = 0

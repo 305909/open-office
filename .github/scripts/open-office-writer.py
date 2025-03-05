@@ -286,24 +286,6 @@ class DocumentComparer:
                             diff_entry.append(f"    - **{key.capitalize()}**: error comparing values: {e}")
                     differences_list.append("\n".join(diff_entry))
 
-            else:
-                match = (ref_elem == test_elem)
-                element_score = 100 if match else 0
-                if not match:
-                    diff_entry = [
-                        f"- **{element_name.capitalize()} {index + 1} mismatch:**",
-                        "  - **Differences:**"
-                    ]
-                    if isinstance(ref_elem, dict) and isinstance(test_elem, dict):
-                        for key in ref_elem.keys():
-                            if key in test_elem and ref_elem[key] != test_elem[key]:
-                                diff_entry.append(f"    - **{key.capitalize()}**:")
-                                diff_entry.append(f"      - **Reference:** {ref_elem[key]}")
-                                diff_entry.append(f"      - **Student Submission:** {test_elem[key]}")
-                    else:
-                        diff_entry.append(f"    - **Reference:** {ref_elem}")
-                        diff_entry.append(f"    - **Student Submission:** {test_elem}")
-                    differences_list.append("\n".join(diff_entry))
             sum_score += element_score
 
         overall_score = sum_score / total_elements

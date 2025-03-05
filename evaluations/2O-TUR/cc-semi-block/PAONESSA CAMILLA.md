@@ -260,7 +260,15 @@
 **Score:** 100.0% match
 
 ## Margins
-**Score:** 100.0% match
+**Score:** 71.4% match
 
+- **Margins mismatch:**
+  - **Differences:**
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}left**:
+      - **Reference:** 1701
+      - **Student Submission:** 1134
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}top**:
+      - **Reference:** 1701
+      - **Student Submission:** 1134
 - 
-Final Score: 78.8%
+Final Score: 68.8%

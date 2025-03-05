@@ -8,8 +8,8 @@
   },
   
   "tolerances": {
-    "empty_lines": 1,
-    "paragraph_similarity_threshold": 0.85,
+    "empty_lines": 2,
+    "paragraph_similarity_threshold": 0.75,
     "paragraph_bonus": 1,
     "image_dimension_tolerance": 0,
     "table_rows_tolerance": 0,

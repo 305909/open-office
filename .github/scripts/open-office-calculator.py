@@ -104,7 +104,7 @@ class StudentEvaluator:
         if errors:
             report_lines.extend(errors)
         else:
-            report_lines.append("- No errors found.")
+            report_lines.append("- No errors.")
 
         detailed_report = "\n".join(report_lines)
         return round(score_percentage, 2), detailed_report

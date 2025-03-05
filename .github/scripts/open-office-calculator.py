@@ -9,8 +9,8 @@ Date: 25.02.2025
 import os
 import sys
 import json
-import pandas as pd
 import subprocess
+import pandas as pd
 
 
 def _get_class_register(registry_path: str) -> dict:
@@ -238,7 +238,7 @@ class AssignmentEvaluator:
 
     def _write_report(self, evaluation_results: list) -> None:
 
-        report_df = pd.DataFrame(evaluation_results)
+        report_df = pd.DataFrame(sorted(evaluation_results, key=lambda x: x["Student"]))
         report_df.to_csv(self.report_file_path, index=False)
         print(f"Overall Evaluation Report available at: {self.report_file_path}")
 

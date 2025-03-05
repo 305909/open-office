@@ -7,54 +7,93 @@
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 2 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 3 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 4 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 5 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 6 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 7 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 9 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 10 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 11 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 12 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 13 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 14 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -68,6 +107,9 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 15 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -81,10 +123,16 @@
     - **Alignment**:
       - **Reference:** right
       - **Student Submission:** left
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 16 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 17 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -95,10 +143,16 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 69
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 18 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 19 mismatch:**
   - **Text Similarity:** 16.7%
   - **Format Similarity:** 85.7%
@@ -109,14 +163,23 @@
     - **Length**:
       - **Reference:** 69
       - **Student Submission:** 15
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 20 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 21 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -127,6 +190,9 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 180
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0, 12.0]
 - **Paragraph 23 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -137,6 +203,9 @@
     - **Length**:
       - **Reference:** 15
       - **Student Submission:** 0
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 24 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -147,6 +216,9 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 215
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0, 12.0]
 - **Paragraph 25 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -157,6 +229,9 @@
     - **Length**:
       - **Reference:** 180
       - **Student Submission:** 0
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 26 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -167,6 +242,9 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 270
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0, 12.0]
 - **Paragraph 27 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -177,6 +255,9 @@
     - **Length**:
       - **Reference:** 215
       - **Student Submission:** 0
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 28 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -187,6 +268,9 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 87
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 29 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -197,10 +281,16 @@
     - **Length**:
       - **Reference:** 270
       - **Student Submission:** 0
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 30 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 31 mismatch:**
   - **Text Similarity:** 15.5%
   - **Format Similarity:** 71.4%
@@ -214,6 +304,9 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 32 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -227,6 +320,9 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 33 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -240,6 +336,9 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 34 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -253,6 +352,9 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **Paragraph 35 mismatch:**
   - **Text Similarity:** 17.4%
   - **Format Similarity:** 85.7%
@@ -263,6 +365,9 @@
     - **Length**:
       - **Reference:** 16
       - **Student Submission:** 30
+    - **Size**:
+      - **Reference:** []
+      - **Student Submission:** [12.0]
 - **7 additional paragraph(s) in reference with no match in the test.**
 ## Images
 **Score:** 100.0% match

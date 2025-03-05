@@ -369,7 +369,7 @@ class DocumentComparer:
 
     def generate_markdown_report(self, report_lines: list[str]) -> str:
 
-        markdown_report = "# Evaluation Report for {self.student_name)\n\n"
+        markdown_report = f"# Evaluation Report for {self.student_name)\n\n"
         
         for line in report_lines:
             if line.startswith("Paragraphs:"):

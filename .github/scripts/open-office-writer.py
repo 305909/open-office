@@ -451,7 +451,7 @@ class DocumentEvaluator:
     def __init__(self, assignment_identifier: str, config: dict = None, registry_path: str = None):
 
         self.assignment_id = assignment_identifier
-        self.registry = _get_class_register(registry_path)  # Load student registry
+        self.registry = _get_class_register(registry_path)
         self.assignments_dir = "assignments"
         self.solutions_dir = "solutions"
         self.evaluations_dir = os.path.join("evaluations", self.assignment_id)
@@ -534,7 +534,7 @@ class DocumentEvaluator:
                 fieldnames = ["Student", "Score (%)"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
-                sorted_results = sorted(evaluation_results, key=lambda x: x["Student"].split()[-1])
+                sorted_results = sorted(evaluation_results, key=lambda x: x["Student"])
                 for result in sorted_results:
                     writer.writerow(result)
             print(f"Overall Evaluation Report available at: {self.report_file}")

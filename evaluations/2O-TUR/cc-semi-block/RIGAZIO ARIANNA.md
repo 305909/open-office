@@ -1,7 +1,7 @@
 # Evaluation Report for RIGAZIO ARIANNA
 
 ## Paragraphs
-**Score:** 74.4% match
+**Score:** 73.4% match
 
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 0.0%
@@ -251,4 +251,4 @@
 **Score:** 100.0% match
 
 - 
-Final Score: 83.4%
+Final Score: 82.7%

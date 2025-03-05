@@ -1,7 +1,7 @@
 # Evaluation Report for NICOARA PETRUTA
 
 ## Paragraphs
-**Score:** 80.0% match
+**Score:** 79.0% match
 
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
@@ -188,4 +188,4 @@
       - **Reference:** 1701
       - **Student Submission:** 1134
 - 
-Final Score: 77.0%
+Final Score: 76.3%

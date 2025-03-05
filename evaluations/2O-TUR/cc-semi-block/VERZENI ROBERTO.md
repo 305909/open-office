@@ -1,7 +1,7 @@
 # Evaluation Report for VERZENI ROBERTO
 
 ## Paragraphs
-**Score:** 82.3% match
+**Score:** 81.3% match
 
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
@@ -155,4 +155,4 @@
       - **Reference:** 1701
       - **Student Submission:** 1134
 - 
-Final Score: 78.5%
+Final Score: 77.8%

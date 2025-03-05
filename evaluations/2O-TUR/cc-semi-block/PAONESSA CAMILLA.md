@@ -1,7 +1,7 @@
 # Evaluation Report for PAONESSA CAMILLA
 
 ## Paragraphs
-**Score:** 67.5% match
+**Score:** 66.5% match
 
 - **Paragraph 18 mismatch:**
   - **Text Similarity:** 0.0%
@@ -271,4 +271,4 @@
       - **Reference:** 1701
       - **Student Submission:** 1134
 - 
-Final Score: 68.8%
+Final Score: 68.2%

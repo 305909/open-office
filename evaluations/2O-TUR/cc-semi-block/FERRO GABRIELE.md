@@ -1,7 +1,7 @@
 # Evaluation Report for FERRO GABRIELE
 
 ## Paragraphs
-**Score:** 86.0% match
+**Score:** 85.0% match
 
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 0.0%
@@ -125,4 +125,4 @@
       - **Reference:** 1701
       - **Student Submission:** 1134
 - 
-Final Score: 80.9%
+Final Score: 80.3%

@@ -343,7 +343,7 @@ class DocumentComparer:
                     f"  - **Format Similarity:** {formatting_similarity * 100:.1f}%",
                     "  - **Differences:**"
                 ]
-                for attr in ["text", "length", "style", "bold", "italic", "underline", "alignment"]:
+                for attr in ["text", "length", "style", "bold", "italic", "underline", "alignment", "font", "size"]:
                     ref_val = ref_p.get(attr)
                     test_val = test_p.get(attr)
                     if ref_val != test_val:

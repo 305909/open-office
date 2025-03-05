@@ -160,10 +160,11 @@ class DocumentAnalyzer:
 
 class DocumentComparer:
 
-    def __init__(self, reference_file: str, test_file: str, config: dict = None):
+    def __init__(self, reference_file: str, test_file: str, student_name: str, config: dict = None):
 
         self.reference_analyzer = DocumentAnalyzer(reference_file)
         self.test_analyzer = DocumentAnalyzer(test_file)
+        self.student_name = student_name
         self.config = config
 
     def assign_score(self, correct: int, total: int) -> float:
@@ -368,7 +369,7 @@ class DocumentComparer:
 
     def generate_markdown_report(self, report_lines: list[str]) -> str:
 
-        markdown_report = "# Evaluation Report\n\n"
+        markdown_report = "# Evaluation Report for {self.student_name)\n\n"
         
         for line in report_lines:
             if line.startswith("Paragraphs:"):
@@ -505,7 +506,7 @@ class DocxAssignmentEvaluator:
                 student_file_path = os.path.join(self.assignment_folder, matched_file)
                 student_file_path = convert_odt_to_docx(student_file_path)
                 try:
-                    comparer = DocumentComparer(self.solution_file, student_file_path, config=self.config)
+                    comparer = DocumentComparer(self.solution_file, student_file_path, student_name, config=self.config)
                     report, final_score = comparer.compare_documents()
                 except Exception as e:
                     print(f"Error processing file {matched_file}: {e}")

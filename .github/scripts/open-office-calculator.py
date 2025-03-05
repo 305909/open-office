@@ -13,7 +13,7 @@ import pandas as pd
 import subprocess
 
 
-def load_student_registry(registry_path: str) -> dict:
+def _get_class_register(registry_path: str) -> dict:
   
     try:
         with open(registry_path, "r") as file:
@@ -24,7 +24,7 @@ def load_student_registry(registry_path: str) -> dict:
         sys.exit(1)
 
 
-def convert_ods_to_csv(ods_file_path: str) -> str:
+def _get_csv(ods_file_path: str) -> str:
 
     if not ods_file_path.lower().endswith(".ods"):
         return ods_file_path
@@ -53,7 +53,7 @@ def convert_ods_to_csv(ods_file_path: str) -> str:
 class CsvFileHandler:
 
     @staticmethod
-    def read_csv_file(csv_file_path: str) -> pd.DataFrame:
+    def _read_csv(csv_file_path: str) -> pd.DataFrame:
 
         return pd.read_csv(csv_file_path, header=None, dtype=str).fillna("")
 
@@ -61,14 +61,14 @@ class CsvFileHandler:
 class StudentEvaluator:
 
     @staticmethod
-    def evaluate_submission(
+    def _evaluate_submission(
         student_file_path: str,
         student_name: str,
         solution_data: pd.DataFrame,
         assignment_data: pd.DataFrame
     ) -> tuple[float, str]:
 
-        student_data = CsvFileHandler.read_csv_file(student_file_path)
+        student_data = CsvFileHandler._read_csv(student_file_path)
 
         score = 0
         total_cells_evaluated = 0
@@ -97,7 +97,7 @@ class StudentEvaluator:
         report_lines = []
         report_lines.append(f"# Evaluation Report for {student_name}\n")
         report_lines.append("## Overview\n")
-        report_lines.append(f"- **Total Evaluation Cells:** {total_cells_evaluated}")
+        report_lines.append(f"- **Total Cells:** {total_cells_evaluated}")
         report_lines.append(f"- **Correct Answers:** {score}")
         report_lines.append(f"- **Final Score:** {round(score_percentage, 2)}%\n")
         report_lines.append("## Errors\n")
@@ -118,7 +118,7 @@ class AssignmentEvaluator:
         self.solutions_directory = "solutions"
         self.evaluations_directory = "evaluations"
         self.assignment_id = assignment_id
-        self.student_registry = load_student_registry(registry_file_path)
+        self.student_registry = _get_class_register(registry_file_path)
 
         if not self.assignment_id:
             print("Error: Assignment identifier is mandatory.")
@@ -139,11 +139,11 @@ class AssignmentEvaluator:
         solution_path_csv = os.path.join(self.solutions_directory, *self.assignment_id.split("/"), "solution.csv")
 
         if os.path.exists(solution_path_ods):
-            return convert_ods_to_csv(solution_path_ods)
+            return _get_csv(solution_path_ods)
         elif os.path.exists(solution_path_csv):
             return solution_path_csv
         else:
-            print(f"Error: Solution file not available for '{self.assignment_id}'.")
+            print(f"Error: Solution file for '{self.assignment_id}' is not available.")
             sys.exit(1)
 
     def _get_assignment_template_file(self) -> str:
@@ -152,53 +152,53 @@ class AssignmentEvaluator:
         assignment_path_csv = os.path.join(self.solutions_directory, *self.assignment_id.split("/"), "assignment.csv")
 
         if os.path.exists(assignment_path_ods):
-            return convert_ods_to_csv(assignment_path_ods)
+            return _get_csv(assignment_path_ods)
         elif os.path.exists(assignment_path_csv):
             return assignment_path_csv
         else:
-            print(f"Error: Assignment template file not available for '{self.assignment_id}'.")
+            print(f"Error: Assignment template file for '{self.assignment_id}' is not available.")
             sys.exit(1)
 
-    def verify_resources(self) -> bool:
+    def _verify_resources(self) -> bool:
 
         if not os.path.exists(self.assignment_folder):
-            print(f"Error: Folder '{self.assignment_folder}' not found.")
+            print(f"Error: Folder '{self.assignment_folder}' is not available.")
             return False
 
         if not os.path.exists(self.solution_file):
-            print(f"Error: Solution file '{self.solution_file}' not found.")
+            print(f"Error: Solution file '{self.solution_file}' is not available.")
             return False
 
         if not os.path.exists(self.assignment_file):
-            print(f"Error: Assignment template file '{self.assignment_file}' not found.")
+            print(f"Error: Assignment template file '{self.assignment_file}' is not available.")
             return False
 
         return True
 
-    def run_evaluation(self) -> None:
+    def _run_evaluation(self) -> None:
 
-        if not self.verify_resources():
+        if not self._verify_resources():
             return
 
-        solution_data = CsvFileHandler.read_csv_file(self.solution_file)
-        assignment_data = CsvFileHandler.read_csv_file(self.assignment_file)
+        solution_data = CsvFileHandler._read_csv(self.solution_file)
+        assignment_data = CsvFileHandler._read_csv(self.assignment_file)
 
         evaluation_results = []
         for student_id, student_name in self.student_registry.items():
-            student_file = self._find_student_submission(student_name)
+            student_file = self._get_student_submission(student_name)
 
             if student_file:
                 student_file_path = os.path.join(self.assignment_folder, student_file)
                 if student_file_path.lower().endswith(".ods"):
-                    student_file_path = convert_ods_to_csv(student_file_path)
+                    student_file_path = _get_csv(student_file_path)
 
                 try:
-                    score, report = StudentEvaluator.evaluate_submission(
+                    score, report = StudentEvaluator._evaluate_submission(
                         student_file_path, student_name, solution_data, assignment_data
                     )
                     print(f"Evaluation for {student_name}: {score}%")
                 except Exception as e:
-                    print(f"Error processing file {student_file}: {e}")
+                    print(f"Execution error for {student_file}: {e}")
                     continue
 
                 evaluation_results.append({
@@ -206,18 +206,18 @@ class AssignmentEvaluator:
                     "Score (%)": score
                 })
 
-                self._save_individual_report(student_name, report)
+                self._save_report(student_name, report)
             else:
                 print(f"No submission for {student_name}.")
                 evaluation_results.append({
                     "Student": student_name,
                     "Score (%)": 0.0
                 })
-                self._save_individual_report(student_name, f"# Evaluation Report for {student_name}\n\nNo submission, score: 0%\n")
+                self._save_report(student_name, f"# Evaluation Report for {student_name}\n\nNo submission, score: 0%\n")
 
-        self._create_consolidated_report(evaluation_results)
+        self._write_report(evaluation_results)
 
-    def _find_student_submission(self, student_name: str) -> str:
+    def _get_student_submission(self, student_name: str) -> str:
 
         surname = student_name.split()[0].upper()
         for file in os.listdir(self.assignment_folder):
@@ -227,16 +227,16 @@ class AssignmentEvaluator:
                     return file
         return None
 
-    def _save_individual_report(self, student_name: str, report: str) -> None:
+    def _save_report(self, student_name: str, report: str) -> None:
 
         individual_report_path = os.path.join(self.evaluation_subfolder, f"{student_name}.md")
         try:
             with open(individual_report_path, "w") as report_file:
                 report_file.write(report)
         except Exception as e:
-            print(f"Error writing report for {student_name}: {e}")
+            print(f"Unable to write .MD report for {student_name}: {e}")
 
-    def _create_consolidated_report(self, evaluation_results: list) -> None:
+    def _write_report(self, evaluation_results: list) -> None:
 
         report_df = pd.DataFrame(evaluation_results)
         report_df.to_csv(self.report_file_path, index=False)
@@ -246,14 +246,14 @@ class AssignmentEvaluator:
 def main():
 
     if len(sys.argv) < 3:
-        print("Error: Please provide the assignment identifier and the registry file path.")
+        print("Error: Please provide the assignment identifier and the registry file path as input parameters.")
         return
 
     assignment_id = sys.argv[1]
     registry_file_path = sys.argv[2]
 
     evaluator = AssignmentEvaluator(assignment_id, registry_file_path)
-    evaluator.run_evaluation()
+    evaluator._run_evaluation()
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 ## Overview
 
-- **Total Evaluation Cells:** 65
+- **Total Cells:** 65
 - **Correct Answers:** 64
 - **Final Score:** 98.46%
 

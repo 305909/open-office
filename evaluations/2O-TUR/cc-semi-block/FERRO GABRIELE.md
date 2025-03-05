@@ -1,29 +1,8 @@
 # Evaluation Report for FERRO GABRIELE
 
 ## Paragraphs
-**Score:** 85.0% match
+**Score:** 86.0% match
 
-- **Paragraph 5 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
-- **Paragraph 6 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
-- **Paragraph 7 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -97,13 +76,6 @@
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
-- **Paragraph 17 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
 - **Paragraph 19 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%
@@ -124,13 +96,6 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 69
-- **Paragraph 39 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
 - **Paragraph 41 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%
@@ -166,4 +131,4 @@
       - **Reference:** 1417
       - **Student Submission:** 1134
 - 
-Final Score: 70.3%
+Final Score: 70.9%

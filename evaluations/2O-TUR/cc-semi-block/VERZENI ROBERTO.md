@@ -1,36 +1,8 @@
 # Evaluation Report for VERZENI ROBERTO
 
 ## Paragraphs
-**Score:** 81.3% match
+**Score:** 82.3% match
 
-- **Paragraph 1 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** center
-      - **Student Submission:** left
-- **Paragraph 2 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** center
-      - **Student Submission:** left
-- **Paragraph 3 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** center
-      - **Student Submission:** left
-- **Paragraph 4 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** center
-      - **Student Submission:** left
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%
@@ -189,4 +161,4 @@
       - **Reference:** 1417
       - **Student Submission:** 1134
 - 
-Final Score: 67.8%
+Final Score: 68.5%

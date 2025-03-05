@@ -1,15 +1,8 @@
 # Evaluation Report for LUCARIELLO DESIRE'
 
 ## Paragraphs
-**Score:** 73.8% match
+**Score:** 74.8% match
 
-- **Paragraph 5 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%
@@ -77,13 +70,6 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 23
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
-- **Paragraph 18 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
     - **Alignment**:
       - **Reference:** left
       - **Student Submission:** right
@@ -262,4 +248,4 @@
 **Score:** 100.0% match
 
 - 
-Final Score: 83.0%
+Final Score: 83.6%

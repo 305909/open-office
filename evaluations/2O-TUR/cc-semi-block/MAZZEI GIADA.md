@@ -3,27 +3,6 @@
 ## Paragraphs
 **Score:** 88.6% match
 
-- **Paragraph 16 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
-- **Paragraph 17 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
-- **Paragraph 18 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** right
 - **Paragraph 31 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%

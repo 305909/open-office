@@ -1,29 +1,8 @@
 # Evaluation Report for FERRARO SVEVA
 
 ## Paragraphs
-**Score:** 64.3% match
+**Score:** 65.3% match
 
-- **Paragraph 5 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
-- **Paragraph 6 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
-- **Paragraph 7 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 85.7%
-  - **Differences:**
-    - **Alignment**:
-      - **Reference:** left
-      - **Student Submission:** center
 - **Paragraph 8 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -343,4 +322,4 @@
       - **Reference:** 1417
       - **Student Submission:** 1134
 - 
-Final Score: 56.8%
+Final Score: 57.5%

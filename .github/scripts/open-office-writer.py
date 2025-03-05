@@ -528,7 +528,7 @@ class DocumentEvaluator:
             except Exception as e:
                 print(f"Unable to write .MD report for {file}: {e}")
             
-            print(f"Evaluation for {student_name}: {final_score:.1f}% (report at {individual_report_path})")
+            print(f"Evaluation for {student_name}: {final_score:.1f}%")
         try:
             with open(self.report_file, "w", newline="") as csvfile:
                 fieldnames = ["Student", "Score (%)"]

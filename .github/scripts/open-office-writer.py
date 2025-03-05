@@ -20,7 +20,7 @@ from lxml import etree
 from docx import Document
 
 
-def load_student_registry(registry_path: str) -> dict:
+def _get_class_register(registry_path: str) -> dict:
   
     try:
         with open(registry_path, "r") as file:
@@ -31,7 +31,7 @@ def load_student_registry(registry_path: str) -> dict:
         sys.exit(1)
 
 
-def convert_odt_to_docx(file_path: str) -> str:
+def _get_docx(file_path: str) -> str:
   
     if not file_path.lower().endswith(".odt"):
         return file_path
@@ -67,7 +67,7 @@ class DocumentAnalyzer:
         except Exception as e:
             raise ValueError(f"Unable to load DOCX file '{file_path}': {e}")
 
-    def get_paragraph_alignment(self, paragraph) -> str:
+    def _get_paragraph_alignment(self, paragraph) -> str:
     
         alignment_map = {0: "left", 1: "center", 2: "right", 3: "justified"}
         try:
@@ -76,7 +76,7 @@ class DocumentAnalyzer:
         except AttributeError:
             return "unknown"
 
-    def get_paragraphs_info(self) -> tuple[list[dict], int]:
+    def _get_paragraphs_info(self) -> tuple[list[dict], int]:
 
         paragraphs_data = []
         empty_lines_count = 0
@@ -98,7 +98,7 @@ class DocumentAnalyzer:
                     "underline": any(getattr(run, "underline", False) for run in paragraph.runs),
                     "font": [run.font.name for run in paragraph.runs if run.font and run.font.name],
                     "size": [run.font.size.pt for run in paragraph.runs if run.font and run.font.size],
-                    "alignment": self.get_paragraph_alignment(paragraph)
+                    "alignment": self._get_paragraph_alignment(paragraph)
                 }
             except Exception as e:
                 paragraph_info = {"text": text, "error": f"Unable to process paragraph {paragraph}: {e}"}
@@ -106,7 +106,7 @@ class DocumentAnalyzer:
 
         return paragraphs_data, empty_lines_count
 
-    def get_images_info(self) -> list[dict]:
+    def _get_images_info(self) -> list[dict]:
 
         images_data = []
         for rel in self.doc.part.rels:
@@ -125,7 +125,7 @@ class DocumentAnalyzer:
                     })
         return images_data
 
-    def get_tables_info(self) -> list[dict]:
+    def _get_tables_info(self) -> list[dict]:
 
         tables_data = []
         for table in self.doc.tables:
@@ -142,7 +142,7 @@ class DocumentAnalyzer:
                 })
         return tables_data
 
-    def get_margins(self) -> dict:
+    def _get_margins(self) -> dict:
 
         margins_data = {}
         try:
@@ -167,11 +167,11 @@ class DocumentComparer:
         self.student_name = student_name
         self.config = config
 
-    def assign_score(self, correct: int, total: int) -> float:
+    def _assign_score(self, correct: int, total: int) -> float:
 
         return (correct / total) * 100.0 if total != 0 else 100.0
 
-    def compare_elements(self, reference_elements: list, test_elements: list, element_name: str) -> tuple[list[str], float]:
+    def _compare_elements(self, reference_elements: list, test_elements: list, element_name: str) -> tuple[list[str], float]:
 
         differences_list = []
         total_elements = len(reference_elements)
@@ -309,7 +309,7 @@ class DocumentComparer:
         overall_score = sum_score / total_elements
         return differences_list, overall_score
 
-    def compare_paragraphs(self, ref_paragraphs: list[dict], test_paragraphs: list[dict]) -> tuple[list[str], float]:
+    def _compare_paragraphs(self, ref_paragraphs: list[dict], test_paragraphs: list[dict]) -> tuple[list[str], float]:
 
         differences = []
         total_score = 0
@@ -358,8 +358,8 @@ class DocumentComparer:
 
         average_score = total_score / count_ref
 
-        _, ref_empty = self.reference_analyzer.get_paragraphs_info()
-        _, test_empty = self.test_analyzer.get_paragraphs_info()
+        _, ref_empty = self.reference_analyzer._get_paragraphs_info()
+        _, test_empty = self.test_analyzer._get_paragraphs_info()
         tolerance_empty = self.config.get("tolerances", {}).get("empty_lines", 1)
         if abs(ref_empty - test_empty) <= tolerance_empty:
             bonus = self.config.get("tolerances", {}).get("paragraph_bonus", 10)
@@ -367,7 +367,7 @@ class DocumentComparer:
 
         return differences, average_score
 
-    def generate_markdown_report(self, report_lines: list[str]) -> str:
+    def _write_markdown_report(self, report_lines: list[str]) -> str:
 
         markdown_report = f"# Evaluation Report for {self.student_name}\n\n"
         
@@ -395,35 +395,35 @@ class DocumentComparer:
 
         return markdown_report
 
-    def compare_documents(self) -> tuple[str, float]:
+    def _compare_documents(self) -> tuple[str, float]:
 
         report_lines = []
 
-        ref_paragraphs, _ = self.reference_analyzer.get_paragraphs_info()
-        test_paragraphs, _ = self.test_analyzer.get_paragraphs_info()
-        para_differences, paragraph_score = self.compare_paragraphs(ref_paragraphs, test_paragraphs)
+        ref_paragraphs, _ = self.reference_analyzer._get_paragraphs_info()
+        test_paragraphs, _ = self.test_analyzer._get_paragraphs_info()
+        para_differences, paragraph_score = self._compare_paragraphs(ref_paragraphs, test_paragraphs)
         report_lines.append(f"Paragraphs: {paragraph_score:.1f}% match")
         report_lines.extend(para_differences)
 
-        image_differences, image_score = self.compare_elements(
-            self.reference_analyzer.get_images_info(),
-            self.test_analyzer.get_images_info(),
+        image_differences, image_score = self._compare_elements(
+            self.reference_analyzer._get_images_info(),
+            self.test_analyzer._get_images_info(),
             "image"
         )
         report_lines.append(f"Images: {image_score:.1f}% match")
         report_lines.extend(image_differences)
 
-        table_differences, table_score = self.compare_elements(
-            self.reference_analyzer.get_tables_info(),
-            self.test_analyzer.get_tables_info(),
+        table_differences, table_score = self._compare_elements(
+            self.reference_analyzer._get_tables_info(),
+            self.test_analyzer._get_tables_info(),
             "table"
         )
         report_lines.append(f"Tables: {table_score:.1f}% match")
         report_lines.extend(table_differences)
 
-        margin_differences, margin_score = self.compare_elements(
-            [self.reference_analyzer.get_margins()],
-            [self.test_analyzer.get_margins()],
+        margin_differences, margin_score = self._compare_elements(
+            [self.reference_analyzer._get_margins()],
+            [self.test_analyzer._get_margins()],
             "margins"
         )
         report_lines.append(f"Margins: {margin_score:.1f}% match")
@@ -443,15 +443,15 @@ class DocumentComparer:
         final_score = min(final_score, 100)
         report_lines.append(f"\nFinal Score: {final_score:.1f}%")
 
-        return self.generate_markdown_report(report_lines), final_score
+        return self._write_markdown_report(report_lines), final_score
 
 
-class DocxAssignmentEvaluator:
+class DocumentEvaluator:
 
     def __init__(self, assignment_identifier: str, config: dict = None, registry_path: str = None):
 
         self.assignment_id = assignment_identifier
-        self.registry = load_student_registry(registry_path)  # Load student registry
+        self.registry = _get_class_register(registry_path)  # Load student registry
         self.assignments_dir = "assignments"
         self.solutions_dir = "solutions"
         self.evaluations_dir = os.path.join("evaluations", self.assignment_id)
@@ -460,7 +460,7 @@ class DocxAssignmentEvaluator:
         solution_odt = os.path.join(self.solutions_dir, *self.assignment_id.split("/"), "solution.odt")
         solution_docx = os.path.join(self.solutions_dir, *self.assignment_id.split("/"), "solution.docx")
         if os.path.exists(solution_odt):
-            self.solution_file = convert_odt_to_docx(solution_odt)
+            self.solution_file = _get_docx(solution_odt)
         elif os.path.exists(solution_docx):
             self.solution_file = solution_docx
         else:
@@ -470,7 +470,7 @@ class DocxAssignmentEvaluator:
         self.report_file = os.path.join(self.evaluations_dir, f"REPORT.csv")
         self.config = config
 
-    def verify_resources(self) -> bool:
+    def _verify_resources(self) -> bool:
 
         if not os.path.exists(self.assignment_folder):
             print(f"Error: Assignment folder '{self.assignment_folder}' is not available.")
@@ -483,9 +483,9 @@ class DocxAssignmentEvaluator:
         os.makedirs(self.evaluations_dir, exist_ok=True)
         return True
 
-    def run_evaluation(self) -> None:
+    def _run_evaluation(self) -> None:
 
-        if not self.verify_resources():
+        if not self._verify_resources():
             return
 
         evaluation_results = []
@@ -504,12 +504,12 @@ class DocxAssignmentEvaluator:
                       
             if matched_file:
                 student_file_path = os.path.join(self.assignment_folder, matched_file)
-                student_file_path = convert_odt_to_docx(student_file_path)
+                student_file_path = _get_docx(student_file_path)
                 try:
                     comparer = DocumentComparer(self.solution_file, student_file_path, student_name, config=self.config)
-                    report, final_score = comparer.compare_documents()
+                    report, final_score = comparer._compare_documents()
                 except Exception as e:
-                    print(f"Error processing file {matched_file}: {e}")
+                    print(f"Execution error for {matched_file}: {e}")
                     continue
             else:
                 final_score = 0.0
@@ -526,10 +526,9 @@ class DocxAssignmentEvaluator:
                 with open(individual_report_path, "w") as report_file:
                     report_file.write(report)
             except Exception as e:
-                print(f"Error writing report for file {file}: {e}")
+                print(f"Unable to write .MD report for {file}: {e}")
             
             print(f"Evaluation for {student_name}: {final_score:.1f}% (report at {individual_report_path})")
-
         try:
             with open(self.report_file, "w", newline="") as csvfile:
                 fieldnames = ["Student", "Score (%)"]
@@ -540,7 +539,7 @@ class DocxAssignmentEvaluator:
                     writer.writerow(result)
             print(f"Overall Evaluation Report available at: {self.report_file}")
         except Exception as e:
-            print(f"Error writing CSV report: {e}")
+            print(f"Unable to write .CSV report: {e}")
 
 
 def main():
@@ -558,13 +557,13 @@ def main():
         try:
             with open(config_file, "r") as cf:
                 config = json.load(cf)
-                print(f"Loaded configuration: {config}")
+                print(f"Runtime configuration: {config}")
         except Exception as e:
-            print(f"Error reading configuration file '{config_file}': {e}")
+            print(f"Unable to read configuration file '{config_file}': {e}")
             return
 
-    evaluator = DocxAssignmentEvaluator(assignment_identifier, config=config, registry_path=registry_path)
-    evaluator.run_evaluation()
+    evaluator = DocumentEvaluator(assignment_identifier, config=config, registry_path=registry_path)
+    evaluator._run_evaluation()
 
 
 if __name__ == "__main__":

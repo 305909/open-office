@@ -1,7 +1,7 @@
 # Evaluation Report for FATHEDDINE SABRINE
 
 ## Paragraphs
-**Score:** 82.8% match
+**Score:** 83.8% match
 
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
@@ -138,4 +138,4 @@
       - **Reference:** 1417
       - **Student Submission:** 1134
 - 
-Final Score: 68.8%
+Final Score: 69.4%

@@ -3,6 +3,57 @@
 ## Paragraphs
 **Score:** 73.9% match
 
+- **Paragraph 1 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
+- **Paragraph 2 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
+- **Paragraph 4 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
+- **Paragraph 5 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
+- **Paragraph 6 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Alignment**:
+      - **Reference:** left
+      - **Student Submission:** justified
 - **Paragraph 7 mismatch:**
   - **Text Similarity:** 40.3%
   - **Format Similarity:** 85.7%
@@ -85,6 +136,16 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 197
+- **Paragraph 19 mismatch:**
+  - **Text Similarity:** 97.0%
+  - **Format Similarity:** 100.0%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** Le prestazioni sono ottime, grazie alla precisione dei martelletti di stampa e ai cinematici studiati in modo tale da rendere più leggera e agile la pressione sui tasti.
+      - **Student Submission:** Le  prestazioni sono ottime, grazie alla precisione dei martelleti di stampa e ai cinematici studiati in modo tale che rende più leggera e agile la pressione sui tasti
+    - **Length**:
+      - **Reference:** 169
+      - **Student Submission:** 167
 - **Paragraph 21 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%

@@ -3,6 +3,13 @@
 ## Paragraphs
 **Score:** 66.2% match
 
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** False
+      - **Student Submission:** True
 - **Paragraph 6 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 100.0%
@@ -33,6 +40,23 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 53
+- **Paragraph 9 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** False
+      - **Student Submission:** True
+- **Paragraph 10 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
 - **Paragraph 11 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -114,6 +138,20 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 39
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+- **Paragraph 17 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+- **Paragraph 18 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
     - **Alignment**:
       - **Reference:** justified
       - **Student Submission:** left

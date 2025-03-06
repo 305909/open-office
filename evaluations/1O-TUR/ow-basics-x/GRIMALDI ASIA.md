@@ -3,6 +3,30 @@
 ## Paragraphs
 **Score:** 62.7% match
 
+- **Paragraph 1 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 2 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
 - **Paragraph 4 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 57.1%
@@ -26,6 +50,16 @@
     - **Italic**:
       - **Reference:** True
       - **Student Submission:** False
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 6 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
@@ -109,6 +143,26 @@
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
+- **Paragraph 12 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 13 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
 - **Paragraph 14 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -176,6 +230,16 @@
     - **Size**:
       - **Reference:** [14.0]
       - **Student Submission:** [14.0, 14.0]
+- **Paragraph 18 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
 - **Paragraph 19 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -202,6 +266,16 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 168
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 21 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
     - **Alignment**:
       - **Reference:** justified
       - **Student Submission:** left

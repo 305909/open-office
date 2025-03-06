@@ -1,8 +1,45 @@
 # Evaluation Report for BIZZOTTO ELISA
 
 ## Paragraphs
-**Score:** 70.1% match
+**Score:** 69.1% match
 
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+- **Paragraph 4 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+- **Paragraph 5 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+- **Paragraph 6 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
 - **Paragraph 7 mismatch:**
   - **Text Similarity:** 40.3%
   - **Format Similarity:** 100.0%
@@ -36,6 +73,16 @@
     - **Italic**:
       - **Reference:** False
       - **Student Submission:** True
+- **Paragraph 10 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
 - **Paragraph 11 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -65,6 +112,20 @@
     - **Alignment**:
       - **Reference:** justified
       - **Student Submission:** left
+- **Paragraph 13 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+- **Paragraph 14 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
 - **Paragraph 15 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
@@ -88,6 +149,26 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 198
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+- **Paragraph 17 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
+- **Paragraph 18 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
     - **Alignment**:
       - **Reference:** justified
       - **Student Submission:** left
@@ -120,6 +201,16 @@
     - **Alignment**:
       - **Reference:** justified
       - **Student Submission:** left
+- **Paragraph 21 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Alignment**:
+      - **Reference:** justified
+      - **Student Submission:** left
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 71.4%
@@ -146,4 +237,4 @@
 **Score:** 100.0% match
 
 - 
-Final Score: 89.5%
+Final Score: 89.2%

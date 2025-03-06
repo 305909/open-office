@@ -3,6 +3,30 @@
 ## Paragraphs
 **Score:** 62.0% match
 
+- **Paragraph 1 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 2 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
 - **Paragraph 4 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 57.1%
@@ -39,6 +63,36 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 31
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 7 mismatch:**
+  - **Text Similarity:** 84.7%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** Progettata da Giuseppe Beccio e disegnata da Marcello Nizzoli, questo modello sostituisce la MP1, ma con molte innovazioni.
+      - **Student Submission:** disegnata da Marcello Nizzoli,  questo modello sostituisce la MP1, ma con molte innovazioni.
+    - **Length**:
+      - **Reference:** 123
+      - **Student Submission:** 92
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 8 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 9 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Italic**:
+      - **Reference:** False
+      - **Student Submission:** True
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']

@@ -1,8 +1,38 @@
 # Evaluation Report for DE PIETRO ALESSIA
 
 ## Paragraphs
-**Score:** 56.8% match
+**Score:** 55.8% match
 
+- **Paragraph 1 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial', 'Arial', 'Arial']
+    - **Size**:
+      - **Reference:** [42.0]
+      - **Student Submission:** [40.0, 40.0, 40.0]
+- **Paragraph 2 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial', 'Arial', 'Arial']
+    - **Size**:
+      - **Reference:** [42.0]
+      - **Student Submission:** [40.0, 40.0, 40.0]
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
 - **Paragraph 4 mismatch:**
   - **Text Similarity:** 100.0%
   - **Format Similarity:** 57.1%
@@ -311,4 +341,4 @@
 **Score:** 100.0% match
 
 - 
-Final Score: 84.9%
+Final Score: 84.5%

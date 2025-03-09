@@ -1,7 +1,7 @@
 # Evaluation Report for SALASSA ZOE
 
 ## Paragraphs
-**Score:** 58.6% match
+**Score:** 62.2% match
 
 - **Paragraph 1 mismatch:**
   - **Text Similarity:** 100.0%
@@ -133,7 +133,7 @@
       - **Student Submission:** [18.0]
 - **Paragraph 12 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -141,15 +141,12 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 48
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 13 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -157,15 +154,12 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 51
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 14 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -173,15 +167,12 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 50
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 15 mismatch:**
   - **Text Similarity:** 14.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** La macchina, che misura 8,3 x 29,8 x 32,4 cm, dà subito un’impressione di leggerezza e agilità, anche se il peso, dovendo garantire robustezza e qualità delle prestazioni, non è indifferente (3,7 Kg).
@@ -189,15 +180,12 @@
     - **Length**:
       - **Reference:** 200
       - **Student Submission:** 43
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 16 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -205,35 +193,26 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 39
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 17 mismatch:**
   - **Text Similarity:** 100.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 18 mismatch:**
   - **Text Similarity:** 100.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 19 mismatch:**
   - **Text Similarity:** 17.1%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** Le prestazioni sono ottime, grazie alla precisione dei martelletti di stampa e ai cinematici studiati in modo tale da rendere più leggera e agile la pressione sui tasti.
@@ -241,15 +220,12 @@
     - **Length**:
       - **Reference:** 169
       - **Student Submission:** 42
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 20 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -257,15 +233,12 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 40
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 21 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -273,15 +246,12 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 43
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 22 mismatch:**
   - **Text Similarity:** 7.1%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** La tastiera presenta alcune limitazioni, dovute alla necessità di contenere le dimensioni (ad esempio, non è presente il tasto col numero 1 che si ottiene utilizzando la lettera elle minuscola), ma la macchina offre alcune funzioni (es. cambio automatico di direzione del movimento del nastro inchiostrato quando questo giunge alla fine; tasto di ritorno; tasto di tabulazione; possibilità di scrittura in rosso o nero o anche senza inchiostro per preparare matrici per la stampa a ciclostile, ecc.) che non fanno rimpiangere le ben più ingombranti macchine professionali.
@@ -289,9 +259,6 @@
     - **Length**:
       - **Reference:** 572
       - **Student Submission:** 44
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
@@ -302,21 +269,7 @@
 **Score:** 100.0% match
 
 ## Margins
-**Score:** 42.9% match
+**Score:** 100.0% match
 
-- **Margins mismatch:**
-  - **Differences:**
-    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}left**:
-      - **Reference:** 1417
-      - **Student Submission:** 1134
-    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}right**:
-      - **Reference:** 850
-      - **Student Submission:** 1134
-    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}top**:
-      - **Reference:** 1417
-      - **Student Submission:** 1134
-    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}bottom**:
-      - **Reference:** 850
-      - **Student Submission:** 1134
 - 
-Final Score: 71.2%
+Final Score: 86.8%

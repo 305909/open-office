@@ -1,15 +1,12 @@
 # Evaluation Report for BRANCHINI CLOE
 
 ## Paragraphs
-**Score:** 64.8% match
+**Score:** 62.3% match
 
 - **Paragraph 1 mismatch:**
-  - **Text Similarity:** 91.7%
+  - **Text Similarity:** 100.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
-    - **Text**:
-      - **Reference:** Il Progetto:
-      - **Student Submission:** Il progetto:
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
@@ -102,18 +99,8 @@
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 9 mismatch:**
-  - **Text Similarity:** 100.0%
-  - **Format Similarity:** 71.4%
-  - **Differences:**
-    - **Bold**:
-      - **Reference:** False
-      - **Student Submission:** True
-    - **Font**:
-      - **Reference:** ['Helvetica']
-      - **Student Submission:** ['Arial']
-- **Paragraph 10 mismatch:**
   - **Text Similarity:** 0.0%
-  - **Format Similarity:** 71.4%
+  - **Format Similarity:** 57.1%
   - **Differences:**
     - **Text**:
       - **Reference:** 
@@ -121,22 +108,38 @@
     - **Length**:
       - **Reference:** 0
       - **Student Submission:** 194
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial', 'Arial']
+    - **Size**:
+      - **Reference:** [14.0]
+      - **Student Submission:** [14.0, 14.0]
+- **Paragraph 10 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** trasportabilità e di limitato ingombro.
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 39
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 11 mismatch:**
-  - **Text Similarity:** 28.3%
+  - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** La tastiera è incorporata nella carrozeria, così come il rullo, di cui sporge solo la manopola; anche l’ingombro della leva dell’interlinea è minimo, per soddisfare nel modo migliore le esigenze di trasportabilità e di limitato ingombro.
-      - **Student Submission:** trasportabilità e di limitato ingombro.
+      - **Student Submission:** 
     - **Length**:
       - **Reference:** 237
-      - **Student Submission:** 39
+      - **Student Submission:** 0
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
@@ -208,19 +211,32 @@
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 19 mismatch:**
-  - **Text Similarity:** 32.9%
+  - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
       - **Reference:** Le prestazioni sono ottime, grazie alla precisione dei martelletti di stampa e ai cinematici studiati in modo tale da rendere più leggera e agile la pressione sui tasti.
-      - **Student Submission:** La tastiera presenta alcune limitazioni , dovute alle necessita' di contenere le
+      - **Student Submission:** 
     - **Length**:
       - **Reference:** 169
-      - **Student Submission:** 80
+      - **Student Submission:** 0
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
 - **Paragraph 20 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** La tastiera presenta alcune limitazioni , dovute alle necessita' di contenere le
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 80
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 21 mismatch:**
   - **Text Similarity:** 0.0%
   - **Format Similarity:** 85.7%
   - **Differences:**
@@ -233,35 +249,16 @@
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
-- **Paragraph 21 mismatch:**
-  - **Text Similarity:** 0.0%
+- **Paragraph 22 mismatch:**
+  - **Text Similarity:** 11.2%
   - **Format Similarity:** 85.7%
   - **Differences:**
     - **Text**:
-      - **Reference:** 
+      - **Reference:** La tastiera presenta alcune limitazioni, dovute alla necessità di contenere le dimensioni (ad esempio, non è presente il tasto col numero 1 che si ottiene utilizzando la lettera elle minuscola), ma la macchina offre alcune funzioni (es. cambio automatico di direzione del movimento del nastro inchiostrato quando questo giunge alla fine; tasto di ritorno; tasto di tabulazione; possibilità di scrittura in rosso o nero o anche senza inchiostro per preparare matrici per la stampa a ciclostile, ecc.) che non fanno rimpiangere le ben più ingombranti macchine professionali.
       - **Student Submission:** ingombranti macchine professionali
     - **Length**:
-      - **Reference:** 0
-      - **Student Submission:** 34
-    - **Font**:
-      - **Reference:** ['Helvetica']
-      - **Student Submission:** ['Arial']
-- **Paragraph 22 mismatch:**
-  - **Text Similarity:** 0.0%
-  - **Format Similarity:** 57.1%
-  - **Differences:**
-    - **Text**:
-      - **Reference:** La tastiera presenta alcune limitazioni, dovute alla necessità di contenere le dimensioni (ad esempio, non è presente il tasto col numero 1 che si ottiene utilizzando la lettera elle minuscola), ma la macchina offre alcune funzioni (es. cambio automatico di direzione del movimento del nastro inchiostrato quando questo giunge alla fine; tasto di ritorno; tasto di tabulazione; possibilità di scrittura in rosso o nero o anche senza inchiostro per preparare matrici per la stampa a ciclostile, ecc.) che non fanno rimpiangere le ben più ingombranti macchine professionali.
-      - **Student Submission:** 
-    - **Length**:
       - **Reference:** 572
-      - **Student Submission:** 0
-    - **Bold**:
-      - **Reference:** False
-      - **Student Submission:** True
-    - **Alignment**:
-      - **Reference:** justified
-      - **Student Submission:** left
+      - **Student Submission:** 34
     - **Font**:
       - **Reference:** ['Helvetica']
       - **Student Submission:** ['Arial']
@@ -289,4 +286,4 @@
       - **Reference:** 850
       - **Student Submission:** 1134
 - 
-Final Score: 73.4%
+Final Score: 72.5%

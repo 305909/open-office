@@ -1,0 +1,289 @@
+# Evaluation Report for BRANCHINI CLOE
+
+## Paragraphs
+**Score:** 62.3% match
+
+- **Paragraph 1 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 2 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 3 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 71.4%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 4 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 57.1%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 5 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 57.1%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 6 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** Progettata da Giuseppe Beccio e disegnata da Marcello Nizzoli , questo modello sostitiusce la MP1,ma con molte innovazioni.
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 123
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 7 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 57.1%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** Progettata da Giuseppe Beccio e disegnata da Marcello Nizzoli, questo modello sostituisce la MP1, ma con molte innovazioni.
+      - **Student Submission:** 
+    - **Length**:
+      - **Reference:** 123
+      - **Student Submission:** 0
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 8 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 57.1%
+  - **Differences:**
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Italic**:
+      - **Reference:** True
+      - **Student Submission:** False
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 9 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 57.1%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** La tastiera è incorporata nella carrozzeria, così come rullo, di cui sorge solo la manopola; anche l'ingombro della leva dell'interlinea è minimo, per soddisfare nel modo migliore le esigenze di
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 194
+    - **Bold**:
+      - **Reference:** False
+      - **Student Submission:** True
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial', 'Arial']
+    - **Size**:
+      - **Reference:** [14.0]
+      - **Student Submission:** [14.0, 14.0]
+- **Paragraph 10 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** trasportabilità e di limitato ingombro.
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 39
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 11 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** La tastiera è incorporata nella carrozeria, così come il rullo, di cui sporge solo la manopola; anche l’ingombro della leva dell’interlinea è minimo, per soddisfare nel modo migliore le esigenze di trasportabilità e di limitato ingombro.
+      - **Student Submission:** 
+    - **Length**:
+      - **Reference:** 237
+      - **Student Submission:** 0
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 12 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 13 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 14 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** La macchina che misura 8,3 x 29,8 x 32,4 cm, dà subito un'impressione di leggerezza e agilità, anche se il peso, dovendo garantire robustezza e qualità delle prestazioni, non è indifferente (3,7 kg).
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 199
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 15 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** La macchina, che misura 8,3 x 29,8 x 32,4 cm, dà subito un’impressione di leggerezza e agilità, anche se il peso, dovendo garantire robustezza e qualità delle prestazioni, non è indifferente (3,7 Kg).
+      - **Student Submission:** 
+    - **Length**:
+      - **Reference:** 200
+      - **Student Submission:** 0
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 16 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 17 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** Le prestazioni sono ottime, grazie alla precisione dei martelletti di stampa e ai cinematici studiati in modo tale da rendere più leggera e agile la pressione dei tasti.
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 169
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 18 mismatch:**
+  - **Text Similarity:** 100.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 19 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** Le prestazioni sono ottime, grazie alla precisione dei martelletti di stampa e ai cinematici studiati in modo tale da rendere più leggera e agile la pressione sui tasti.
+      - **Student Submission:** 
+    - **Length**:
+      - **Reference:** 169
+      - **Student Submission:** 0
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 20 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** La tastiera presenta alcune limitazioni , dovute alle necessita' di contenere le
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 80
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 21 mismatch:**
+  - **Text Similarity:** 0.0%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** 
+      - **Student Submission:** dimenzioni (ad esempio non è presente il tasto col numero 1 che si ottiene  utilizzando le lettere alle maiuscol), ma la macchina offre alcune funzioni ( es . Cambio automatico di direzione del movimento del nastro inchiostrato quando questo giunge alla fine ; tasto di ritorno ; tasto di tabulazione ;possibilita' di scrittura in rosso o nero o anche senza inchiostro per preparare matrici per la stampa a ciclostile ecc.) che non fanno rimpiangere le ben piu'
+    - **Length**:
+      - **Reference:** 0
+      - **Student Submission:** 461
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+- **Paragraph 22 mismatch:**
+  - **Text Similarity:** 11.2%
+  - **Format Similarity:** 85.7%
+  - **Differences:**
+    - **Text**:
+      - **Reference:** La tastiera presenta alcune limitazioni, dovute alla necessità di contenere le dimensioni (ad esempio, non è presente il tasto col numero 1 che si ottiene utilizzando la lettera elle minuscola), ma la macchina offre alcune funzioni (es. cambio automatico di direzione del movimento del nastro inchiostrato quando questo giunge alla fine; tasto di ritorno; tasto di tabulazione; possibilità di scrittura in rosso o nero o anche senza inchiostro per preparare matrici per la stampa a ciclostile, ecc.) che non fanno rimpiangere le ben più ingombranti macchine professionali.
+      - **Student Submission:** ingombranti macchine professionali
+    - **Length**:
+      - **Reference:** 572
+      - **Student Submission:** 34
+    - **Font**:
+      - **Reference:** ['Helvetica']
+      - **Student Submission:** ['Arial']
+## Images
+**Score:** 100.0% match
+
+## Tables
+**Score:** 100.0% match
+
+## Margins
+**Score:** 42.9% match
+
+- **Margins mismatch:**
+  - **Differences:**
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}left**:
+      - **Reference:** 1417
+      - **Student Submission:** 1134
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}right**:
+      - **Reference:** 850
+      - **Student Submission:** 1134
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}top**:
+      - **Reference:** 1417
+      - **Student Submission:** 1134
+    - **{http://schemas.openxmlformats.org/wordprocessingml/2006/main}bottom**:
+      - **Reference:** 850
+      - **Student Submission:** 1134
+- 
+Final Score: 72.5%

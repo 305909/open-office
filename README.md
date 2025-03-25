@@ -24,7 +24,12 @@
    - [3.2. MEDIA.SE](#32-mediase)  
    - [3.3. CONTA.SE](#33-contase)  
 
-4. [Manuale](#4-manuale)
+4. [Funzioni Condizionali Avanzate: SOMMA.PIÙ.SE, MEDIA.PIÙ.SE, CONTA.PIÙ.SE](#4-funzioni-condizionali-avanzate-sommapiùse-mediapiùse-contapiùse)  
+   - [4.1. SOMMA.PIÙ.SE](#41-sommapiùse)  
+   - [4.2. MEDIA.PIÙ.SE](#42-mediapiùse)  
+   - [4.3. CONTA.PIÙ.SE](#43-contapiùse)
+
+5. [Manuale](#5-manuale)
 
 ---
 
@@ -44,7 +49,7 @@ Il foglio di calcolo si presenta nel formato:
 dove:  
 - ciascuna **colonna** è identificata da una lettera (`A`, `B`, `C`, …);  
 - ciascuna **riga** è identificata da un numero (`1`, `2`, `3`, …);
-- ciascuna **cella** è identificata da una combinazione alfa-numerica che indica la colonna e la riga di appartenenza (ad esempio, `A1` si riferisce alla cella di intersezione della colonna `A` con la riga `1`).
+- ciascuna **cella** è identificate da una combinazione alfa-numerica che indica la colonna e la riga di appartenenza (ad esempio, `A1` si riferisce alla cella di intersezione della colonna `A` e della riga `1`).
 
 ---
 
@@ -264,7 +269,7 @@ dove:
 - $\text{intervallo condizionale}$ è l’insieme di celle oggetto della funzione `SE`,
 - $\text{intervallo di somma}$ è l’insieme di celle oggetto della funzione `SOMMA`,
 - $\sum_{i=1}^{n} I_{c}(y_i) \cdot x_i = I_{c}(y_1)\cdot x_1 + I_{c}(y_2) \cdot x_2 + \dots + I_{c}(y_n) \cdot x_n$,
-- $n$ è il numero di celle con valori numerici nell’intervallo,
+- $n$ è il numero di celle con valori numerici nell’intervallo di somma,
 - $x_i$ è il valore numerico della $i$-esima cella nell'intervallo di somma,
 - $I_{c}(y_i)$ è la funzione indicatrice, che restituisce $1$ se $y_i$ - il valore alfa-numerico della $i$-esima cella nell'intervallo condizionale - rispetta la *condizione* $c$, altrimenti $0$.
 
@@ -309,7 +314,7 @@ dove:
 - $\text{intervallo di media}$ è l’insieme di celle oggetto della funzione `MEDIA`,
 - $\sum_{i=1}^{n} I_{c}(y_i) \cdot x_i = I_{c}(y_1)\cdot x_1 + I_{c}(y_2) \cdot x_2 + \dots + I_{c}(y_n) \cdot x_n$,
 - $\sum_{i=1}^{n} I_{c}(y_i) = I_{c}(y_1) + I_{c}(y_2) + \dots + I_{c}(y_n)$,
-- $n$ è il numero di celle con valori numerici nell’intervallo,
+- $n$ è il numero di celle con valori numerici nell’intervallo di media,
 - $x_i$ è il valore numerico della $i$-esima cella nell'intervallo di media,
 - $I_{c}(y_i)$ è la funzione indicatrice, che restituisce $1$ se $y_i$ - il valore alfa-numerico della $i$-esima cella nell'intervallo condizionale - rispetta la *condizione* $c$, altrimenti $0$.
 
@@ -382,18 +387,173 @@ La funzione `=CONTA.SE(A1:A3;"A")` restituisce il valore:
   
 ---
 
-## 4. Manuale
-
-| Funzione   | Sintassi                                                        | Descrizione                                                                                           |
-|------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [SOMMA](#11-somma)      | `=SOMMA(intervallo di celle)`                                   | Calcola la **somma** dei valori numerici presenti nell'intervallo.                                               |
-| [MEDIA](#12-media)      | `=MEDIA(intervallo di celle)`                                   | Calcola la **media aritmetica** dei valori numerici presenti nell'intervallo.                              |
-| [CONTA](#13-conta)      | `=CONTA(intervallo di celle)`                                   | Calcola il **numero** di valori numerici presenti nell'intervallo.                                            |
-| [MAX](#21-max)        | `=MAX(intervallo di celle)`                                     | Cerca il **valore massimo** tra i valori numerici presenti nell'intervallo.                         |
-| [MIN](#22-min)        | `=MIN(intervallo di celle)`                                     | Cerca il **valore minimo** tra i valori numerici presenti nell'intervallo.                          |
-| [SE](#23-se)         | `=SE(condizione; valore se vero; valore se falso)`              | Restituisce un valore in base ad una *condizione logica*.|
-| [SOMMA.SE](#31-sommase)   | `=SOMMA.SE(intervallo condizionale; condizione; intervallo di somma)` | Calcola la **somma** dei valori numerici presenti in un intervallo che rispettano una *condizione*. |
-| [MEDIA.SE](#32-mediase)   | `=MEDIA.SE(intervallo condizionale; condizione; intervallo di media)` | Calcola la **media aritmetica** dei valori numerici presenti in un intervallo che rispettano una *condizione*.           |
-| [CONTA.SE](#33-contase)   | `=CONTA.SE(intervallo; condizione)`                               | Calcola il **numero** di valori alfa-numerici presenti in un intervallo che rispettano una *condizione*                       |
+## 4. Funzioni Condizionali Avanzate: SOMMA.PIÙ.SE, MEDIA.PIÙ.SE, CONTA.PIÙ.SE  
 
 ---
+
+### 4.1. SOMMA.PIÙ.SE
+
+La funzione `SOMMA.PIÙ.SE` calcola la **somma** dei valori numerici presenti in un intervallo di celle che rispettano *diverse condizioni* contemporaneamente:
+
+
+  
+$$\text{SOMMA.PIÙ.SE}(\text{intervallo di somma}; \text{ intervallo condizionale A}; \text{ condizione A}; \text{ intervallo condizionale B}; \text{ condizione B}; \dots) = \sum_{i=1}^{n} \left( \prod_{j=1}^{m} I_{c_j}(y_{ij}) \right) \cdot x_i$$
+
+
+  
+
+dove:  
+- $\text{intervallo di somma}$ è l’insieme di celle oggetto della funzione `SOMMA`,  
+- $\text{intervallo condizionale } j$ è l’insieme di celle oggetto della $j$-esima condizione `SE`,  
+- $\text{condizione } j$ è il criterio per ciascun valore alfa-numerico dell'intervallo condizionale $j$,  
+- $x_i$ è il valore numerico della $i$-esima cella nell'intervallo di somma,  
+- $y_{ij}$ è il valore alfa-numerico della $i$-esima cella nell’intervallo condizionale $j$,  
+- $I_{c_j}(y_{ij})$ è la funzione indicatrice che restituisce $1$ se $y_{ij}$ rispetta la *condizione* $c_j$, altrimenti $0$,  
+- $n$ è il numero di celle con valori numerici nell’intervallo di somma,
+- $m$ è il numero di condizioni.
+
+La formula per la funzione `SOMMA.PIÙ.SE` in Calc è:
+
+```
+=SOMMA.PIÙ.SE(intervallo di somma; intervallo condizionale A; condizione A; intervallo condizionale B; condizione B; …)
+```
+
+**Esempio:**
+
+Si consideri l’insieme di dati:
+
+| Prodotto | Prezzo | Quantità |
+|----------|--------|----------|
+| A        | 15     | 5        |
+| B        | 20     | 8        |
+| A        | 25     | 3        |
+
+La funzione `=SOMMA.PIÙ.SE(B1:B3; A1:A3; "A"; C1:C3; ">4")` calcola la somma dei valori presenti nell’intervallo `B1:B3` per i quali, corrispondentemente, il valore in `A1:A3` è `"A"` **e** il valore in `C1:C3` è maggiore di 4. In questo esempio, la funzione restituisce:
+
+
+
+
+$$15$$
+
+
+
+  
+---
+
+### 4.2. MEDIA.PIÙ.SE
+
+La funzione `MEDIA.PIÙ.SE` calcola la **media aritmetica** dei valori numerici presenti in un intervallo di celle che rispettano *diverse condizioni* contemporaneamente:
+
+
+  
+$$\text{MEDIA.PIÙ.SE}(\text{intervallo di media}; \text{ intervallo condizionale A}; \text{ condizione A}; \text{ intervallo condizionale B}; \text{ condizione B}; \dots) = \frac{\sum_{i=1}^{n} \left( \prod_{j=1}^{m} I_{c_j}(y_{ij}) \right) \cdot x_i}{\sum_{i=1}^{n} \prod_{j=1}^{m} I_{c_j}(y_{ij})}$$
+
+
+  
+
+dove:  
+- $\text{intervallo di media}$ è l’insieme di celle oggetto della funzione `MEDIA`,  
+- $\text{intervallo condizionale } j$ è l’insieme di celle oggetto della $j$-esima condizione `SE`,  
+- $\text{condizione } j$ è il criterio per ciascun valore alfa-numerico dell'intervallo condizionale $j$,  
+- $x_i$ è il valore numerico della $i$-esima cella nell'intervallo di media,  
+- $y_{ij}$ è il valore alfa-numerico della $i$-esima cella nell’intervallo condizionale $j$,  
+- $I_{c_j}(y_{ij})$ è la funzione indicatrice che restituisce $1$ se $y_{ij}$ rispetta la *condizione* $c_j$, altrimenti $0$,  
+- $n$ è il numero di celle con valori numerici nell’intervallo di media,
+- $m$ è il numero di condizioni.
+
+La formula per la funzione `MEDIA.PIÙ.SE` in Calc è:
+
+```
+=MEDIA.PIÙ.SE(intervallo di media; intervallo condizionale A; condizione A; intervallo condizionale B; condizione B; …)
+```
+
+**Esempio:**
+
+Si consideri l’insieme di dati:
+
+| Prodotto | Prezzo | Quantità |
+|----------|--------|----------|
+| A        | 15     | 5        |
+| B        | 20     | 8        |
+| A        | 25     | 3        |
+
+La funzione `=MEDIA.PIÙ.SE(B1:B3; A1:A3; "A"; C1:C3; ">2")` calcola la media dei valori presenti nell’intervallo `B1:B3` per i quali, corrispondentemente, il valore in `A1:A3` è `"A"` **e** il valore in `C1:C3` è maggiore di 2. In questo esempio, la funzione restituisce:
+
+
+
+
+$$20$$
+
+
+
+  
+---
+
+### 4.3. CONTA.PIÙ.SE
+
+La funzione `CONTA.PIÙ.SE` calcola il **numero** di valori alfa-numerici presenti in un intervallo di celle che rispettano *diverse condizioni* contemporaneamente:
+
+
+  
+$$\text{CONTA.PIÙ.SE}(\text{ intervallo condizionale A}; \text{ condizione A}; \text{ intervallo condizionale B}; \text{ condizione B}; \dots) = \sum_{i=1}^{n} \prod_{j=1}^{m} I_{c_j}(y_{ij})$$
+
+
+
+dove:  
+- $\text{intervallo condizionale } j$ è l’insieme di celle oggetto della $j$-esima condizione `SE`,  
+- $\text{condizione } j$ è il criterio per ciascun valore alfa-numerico dell'intervallo condizionale $j$,  
+- $y_{ij}$ è il valore alfa-numerico della $i$-esima cella nell’intervallo condizionale $j$,  
+- $I_{c_j}(y_{ij})$ è la funzione indicatrice che restituisce $1$ se $y_{ij}$ rispetta la *condizione* $c_j$, altrimenti $0$,  
+- $n$ è il numero di celle con valori alfa-numerici nell’intervallo,
+- $m$ è il numero di condizioni.
+
+La formula per la funzione `CONTA.PIÙ.SE` in Calc è:
+
+```
+=CONTA.PIÙ.SE(intervallo condizionale A; condizione A; intervallo condizionale B; condizione B; …)
+```
+
+**Esempio:**
+
+Si consideri l’insieme di dati:
+
+| Prodotto | Prezzo | Quantità |
+|----------|--------|----------|
+| A        | 15     | 5        |
+| B        | 20     | 8        |
+| A        | 25     | 3        |
+
+La funzione `=CONTA.PIÙ.SE(A1:A3; "A"; C1:C3; ">4")` calcola il numero di celle per cui il valore in `A1:A3` è `"A"` **e** il valore in `C1:C3` è maggiore di 4. In questo esempio, la funzione restituisce:
+
+
+
+
+$$1$$
+
+
+
+  
+---
+
+## 5. Manuale
+
+| Funzione            | Sintassi                                                                                      | Descrizione                                                                                           |
+|---------------------|-----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [SOMMA](#11-somma)  | `=SOMMA(intervallo di celle)`                                                                  | Calcola la **somma** dei valori numerici presenti nell'intervallo.                                     |
+| [MEDIA](#12-media)  | `=MEDIA(intervallo di celle)`                                                                  | Calcola la **media aritmetica** dei valori numerici presenti nell'intervallo.                         |
+| [CONTA](#13-conta)  | `=CONTA(intervallo di celle)`                                                                  | Calcola il **numero** di valori numerici presenti nell'intervallo.                                    |
+| [MAX](#21-max)      | `=MAX(intervallo di celle)`                                                                    | Cerca il **valore massimo** tra i valori numerici presenti nell'intervallo.                           |
+| [MIN](#22-min)      | `=MIN(intervallo di celle)`                                                                    | Cerca il **valore minimo** tra i valori numerici presenti nell'intervallo.                            |
+| [SE](#23-se)        | `=SE(condizione; valore se vero; valore se falso)`                                             | Restituisce un valore in base ad una *condizione logica*.                                             |
+| [SOMMA.SE](#31-sommase)  | `=SOMMA.SE(intervallo condizionale; condizione; intervallo di somma)`                        | Calcola la **somma** dei valori numerici presenti in un intervallo che rispettano una *condizione*.   |
+| [MEDIA.SE](#32-mediase)  | `=MEDIA.SE(intervallo condizionale; condizione; intervallo di media)`                         | Calcola la **media aritmetica** dei valori numerici presenti in un intervallo che rispettano una *condizione*. |
+| [CONTA.SE](#33-contase)  | `=CONTA.SE(intervallo; condizione)`                                                          | Calcola il **numero** di valori alfa-numerici presenti in un intervallo che rispettano una *condizione*. |
+| [SOMMA.PIÙ.SE](#41-sommapiùse) | `=SOMMA.PIÙ.SE(intervallo di somma; intervallo condizionale A; condizione A; ...)`         | Calcola la **somma** dei valori numerici che rispettano *diverse condizioni* contemporaneamente.       |
+| [MEDIA.PIÙ.SE](#42-mediapiùse) | `=MEDIA.PIÙ.SE(intervallo di media; intervallo condizionale A; condizione A; ...)`         | Calcola la **media aritmetica** dei valori numerici che rispettano *diverse condizioni* contemporaneamente. |
+| [CONTA.PIÙ.SE](#43-contapiùse) | `=CONTA.PIÙ.SE(intervallo condizionale A; condizione A; ...)`                              | Calcola il **numero** di valori che rispettano *diverse condizioni* contemporaneamente.               |
+
+---
+
+
+
+

@@ -1,6 +1,6 @@
 # Analisi Stagione Turistica
 
-Il file **test.xlsx** contiene una tabella con dati simulati relativi alle prenotazioni settimanali di diverse strutture ricettive.
+Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relativi alle prenotazioni settimanali di diverse strutture ricettive.
 
 ## Struttura della tabella (anteprima)
 

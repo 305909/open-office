@@ -52,7 +52,9 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 * **Descrizione**:
 
   * Se il `Prezzo Unitario` (colonna `F`) è maggiore di `20€`, la fascia è `"Alta"`.
+  
   * Se il `Prezzo Unitario` è compreso tra `10€` (incluso) e `20€` (incluso), la fascia è `"Media"`.
+  
   * Altrimenti (minore di `10€`), la fascia è `"Bassa"`.
 
 * **Estendere fino a `I61`**

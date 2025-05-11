@@ -37,8 +37,8 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 2. **Prezzo medio per notte su tutte le strutture**
 
-* **Dove**: cella `K3`
-* **Formula attesa**:
+- **Dove**: cella `K3`
+- **Formula attesa**:
 
 ```excel
 =MEDIA(F2:F61)
@@ -46,8 +46,8 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 3. **Numero di Hotel**
 
-* **Dove**: cella `K4`
-* **Formula attesa**:
+- **Dove**: cella `K4`
+- **Formula attesa**:
 
 ```excel
 =CONTA.SE(C2:C61; "Hotel")
@@ -55,8 +55,8 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 4. **Posti prenotati nei B\&B**
 
-* **Dove**: cella `K5`
-* **Formula attesa**:
+- **Dove**: cella `K5`
+- **Formula attesa**:
 
 ```excel
 =SOMMA.SE(C2:C61; "B&B"; E2:E61)
@@ -64,8 +64,8 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 5. **Prezzo medio per notte solo per gli agriturismi**
 
-* **Dove**: cella `K6`
-* **Formula attesa**:
+- **Dove**: cella `K6`
+- **Formula attesa**:
 
 ```excel
 =MEDIA.SE(C2:C61; "Agriturismo"; F2:F61)
@@ -73,25 +73,25 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 6. **Classificazione dell’affluenza**
 
-* **Dove**: aggiungere una nuova colonna `Affluenza` in colonna `I`, a partire da cella `I2` fino a `I61`
-* **Formula da inserire in `I2`**:
+- **Dove**: aggiungere una nuova colonna `Affluenza` in colonna `I`, a partire da cella `I2` fino a `I61`
+- **Formula da inserire in `I2`**:
 
 ```excel
 =SE(E2>40; "Alta"; SE(E2>=20; "Media"; "Bassa"))
 ```
 
-* **Estendere fino a `I61`**
+- **Estendere fino a `I61`**
 
 ### 7. **Ricavo stimato per riga**
 
-* **Dove**: aggiungere una nuova colonna `Ricavo Stimato` in colonna `J`, da `J2` a `J61`
-* **Formula da inserire in `J2`**:
+- **Dove**: aggiungere una nuova colonna `Ricavo Stimato` in colonna `J`, da `J2` a `J61`
+- **Formula da inserire in `J2`**:
 
 ```excel
 =E2 * F2
 ```
 
-* **Estendere fino a `J61`**
+- **Estendere fino a `J61`**
 
 ---
 

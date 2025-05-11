@@ -32,39 +32,39 @@ Il file **[test.xlsx](test.xlsx)** contiene una tabella con dati simulati relati
 
 ### 2. **Prezzo unitario medio di tutti i prodotti**
 
-* **Dove**: cella `K3`
+- **Dove**: cella `K3`
 
 ### 3. **Numero di prodotti della categoria "Vino”**
 
-* **Dove**: cella `K4`
+- **Dove**: cella `K4`
 
 ### 4. **Quantità totale venduta per i prodotti della regione "Toscana”**
 
-* **Dove**: cella `K5`
+- **Dove**: cella `K5`
 
 ### 5. **Prezzo unitario medio dei prodotti categoria "Olio”**
 
-* **Dove**: cella `K6`
+- **Dove**: cella `K6`
 
 ### 6. **Classificazione del Prezzo Unitario**
 
-* **Dove**: aggiungere una nuova colonna `Fascia Prezzo` in colonna `I`, a partire da cella `I2` fino a `I61`
-* **Descrizione**:
+- **Dove**: aggiungere una nuova colonna `Fascia Prezzo` in colonna `I`, a partire da cella `I2` fino a `I61`
+- **Descrizione**:
 
-  * Se il `Prezzo Unitario` (colonna `F`) è maggiore di `20€`, la fascia è `"Alta"`.
+-- Se il `Prezzo Unitario` (colonna `F`) è maggiore di `20€`, la fascia è `"Alta"`.
   
-  * Se il `Prezzo Unitario` è compreso tra `10€` (incluso) e `20€` (incluso), la fascia è `"Media"`.
+-- Se il `Prezzo Unitario` è compreso tra `10€` (incluso) e `20€` (incluso), la fascia è `"Media"`.
   
-  * Altrimenti (minore di `10€`), la fascia è `"Bassa"`.
+-- Altrimenti (minore di `10€`), la fascia è `"Bassa"`.
 
-* **Estendere fino a `I61`**
+- **Estendere fino a `I61`**
 
 ### 7. **Valore Totale Ordine per riga**
 
-* **Dove**: aggiungere una nuova colonna `Valore Ordine` in colonna `J`, da `J2` a `J61`
-* **Descrizione**: Calcolare il valore totale per ciascuna riga d'ordine (`Quantità Venduta * Prezzo Unitario`).
+- **Dove**: aggiungere una nuova colonna `Valore Ordine` in colonna `J`, da `J2` a `J61`
+- **Descrizione**: Calcolare il valore totale per ciascuna riga d'ordine (`Quantità Venduta * Prezzo Unitario`).
 
-* **Estendere fino a `J61`**
+- **Estendere fino a `J61`**
 
 ---
 

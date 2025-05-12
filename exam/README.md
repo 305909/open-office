@@ -1,6 +1,6 @@
 # Analisi Vendite Prodotti Tipici Online
 
-Il file **[exam.xlsx](exam.xlsx)** contiene una tabella con dati simulati relativi agli ordini di un e-commerce di prodotti tipici italiani.
+Il file **[exam.ods](exam.ods)** contiene una tabella con dati simulati relativi agli ordini di un e-commerce di prodotti tipici italiani.
 
 ## Struttura della tabella (anteprima)
 

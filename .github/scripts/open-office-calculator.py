@@ -75,17 +75,15 @@ class StudentEvaluator:
         total_cells_evaluated = 0
         errors = []
 
-        rows_to_evaluate = len(solution_data)
-        cols_to_evaluate = len(solution_data.columns)
+        rows_to_evaluate = min(len(solution_data), len(student_data))
+        cols_to_evaluate = min(len(solution_data.columns), len(student_data.columns))
 
         for row_idx in range(rows_to_evaluate):
             for col_idx in range(cols_to_evaluate):
-                try:
-                    solution_value = solution_data.iat[row_idx, col_idx]
-                    assignment_value = assignment_data.iat[row_idx, col_idx]
-                    student_value = student_data.iat[row_idx, col_idx]
-                except IndexError:
-                    continue
+                solution_value = solution_data.iat[row_idx, col_idx]
+                assignment_value = assignment_data.iat[row_idx, col_idx]
+                student_value = student_data.iat[row_idx, col_idx]
+              
                 solution_value = solution_data.iat[row_idx, col_idx]
                 assignment_value = assignment_data.iat[row_idx, col_idx]
                 student_value = student_data.iat[row_idx, col_idx]

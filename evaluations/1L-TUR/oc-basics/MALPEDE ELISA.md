@@ -2,10 +2,192 @@
 
 ## Overview
 
-- **Total Cells:** 0
-- **Correct Answers:** 0
-- **Final Score:** 0%
+- **Total Cells:** 126
+- **Correct Answers:** 65
+- **Final Score:** 51.59%
 
 ## Errors
 
-- No errors.
+- **Cell (2, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (3, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (4, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (5, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (6, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (6, 11) mismatch:**
+  - **Result:** `17,1666666666667`
+  - **Student Submission:** `17,17`
+- **Cell (7, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (8, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (9, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (10, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (11, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (12, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (13, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (14, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (15, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (16, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (17, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (18, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (19, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (20, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (21, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (22, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (23, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (24, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (25, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (26, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (27, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (28, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (29, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (30, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (31, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (32, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (33, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (34, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (35, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (36, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (37, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (38, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (39, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (40, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (41, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (42, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (43, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (44, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (45, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (46, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (47, 9) mismatch:**
+  - **Result:** `Alta`
+  - **Student Submission:** ``
+- **Cell (48, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (49, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (50, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (51, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (52, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (53, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (54, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (55, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (56, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (57, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
+- **Cell (58, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (59, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (60, 9) mismatch:**
+  - **Result:** `Bassa`
+  - **Student Submission:** ``
+- **Cell (61, 9) mismatch:**
+  - **Result:** `Media`
+  - **Student Submission:** ``
